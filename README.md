@@ -2,23 +2,24 @@
 
 ---
 
-Created: 2020/09/16 21:21:48
-Last modified: 2020/09/16 21:37:12
-Version: 0.0.0-beta
+Created: 2020/09/16 21:21:48  
+Last modified: 2020/09/16 21:37:12  
+Version: 0.0.0-beta  
 
 ---
 
 Crashkurs zur Vorlesung Betriebssystem an der Hochschule Heilbronn im Studiengang  Software Engineering Bachelor (SEB). 
 
-[Dialog](#Dialog)
-[Grundlagen](#grundlagen)
-[Funktionen](#funktionen)
-[Pointers](#pointers)
-[Datenstrukturen](#datenstrukturen)
-[C-Bibliotheken](#bibliotheken)
-[Anhang 
-[C Style Guide](#c-style-guide)
+Inhalt 
+1. [Dialog](#Dialog)
+2. [Grundlagen](#grundlagen)
+3. [Funktionen](#funktionen)
+4. [Pointers](#pointers)
+5. [Datenstrukturen](#datenstrukturen)
+6. [C-Bibliotheken](#bibliotheken) 
 
+Anhang 
+1. [C Style Guide](#c-style-guide)
 ## Ein Dialog über C
 
 
