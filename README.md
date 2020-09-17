@@ -150,11 +150,11 @@ Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und getartet und au�
 
 Funktionen kennt vermutlich jeder noch aus Mathemathik. Bei Funktion der Art 
 
-(1) $y = g(f(x))$
+(1) *y = g(f(x))*
 
-könntnen die Funktionen $g(x)$ und $f(x) $beispielsweise wie folgt aussehen: 
+könntnen die Funktionen *g(x)* und *f(x)* beispielsweise wie folgt aussehen: 
 
-(2) $g : y = x +1$ und $f : y = x *2$ 
+(2) *g : y = x +1* und *f : y = x \* 2* 
 
 In C schreiben wir die Funktion aus (1) folgendermaßen:
 
@@ -179,7 +179,7 @@ int main(int argc, char* argv[])
 
 Und als Formel würden wir das so schreiben: 
 
-(3) $y = main(g(f(x))$
+(3) *y = main(g(f(x))*
 
 Die Funktionen in C (oder allgemein in Programmiersprachen) funktionieren demnach mehr oder weniger wie Funktionen in der Mathemtik.
 
@@ -228,7 +228,37 @@ int main(int argc, char* argv[])
 
 1. Ändern Sie den Code aus dem vorherigen Beispiel so, dass die Implementierung der *main*-Funktion vor *g* und *f* steht. Kompilieren Sie das Programm. Was passiert?
 2. Ändern Sie nochmals das ursprüngliche Prgramm. Löschen Sie dieses Mal die Zeile `#include <stdio.h>`. Kompilieren Sie das Program. Was beobachten Sie? Wie könnte das mit der vorherigen Aufgabe zusammenhängen?
+3. Nehmen Sie nun nochmals das Programm aus der ersten Übungsaufgabe und ändern Sie es entsprechend dem untenstehenden Beispiel ab. Kompilieren Sie das Programm. Was beobachten Sie?
 
+```c
+#include <stdio.h>
+
+long f(long x);
+long g (long x);
+
+int main(int argc, char* argv[])
+{
+    ...
+}
+
+long f(long x)
+{
+    ...
+} 
+
+long g (long x)
+{
+    ...
+}
+```
+
+In der dritten der vorherigen Übungsaufgaben haben Sie einen Funktionsprototyp (engl.) erstellt. D.h. Sie haben die Funktion  getrennt von der Implementierung deklariert. Sie teilen so dem Compiler die Schnittstelle der Funktion mit, so dass er diese verwenden kann. Dies ermöglicht beispielsiwese den Einsatz sogenanntern Single-Pass-Compiler. Leider sind Compiler kein Bestandteil der Betriebssystemvorlesung, weswegen wir hier nicht genauer darauf eingehen.
+
+Übungsaufgaben:
+
+1. Suchen Sie im Ordner */usr/include* nach der Datei *stdio.h*. Öffnen Sie die Datei und suchen hier nach *printf*. Keine Sorge Sie müssen nicht verstehen, was hier steht. 
+
+*gcc* weiß, dass die Datei stdio.h im Pfad */usr/include* zu finden ist. Ebenso, wo die Standard C Bibliothek zu finden ist, in der die Funktionen letztendlich definiert sind. Diese liegen je nach System unter */usr/lib/libc*, */lib/libc*, */usr/lib/klibc* o.ä. Der Linker wird als zweiten Schritt ausgeführt, wenn Sie *gcc* aufrufen. Stark vereinfacht ausgedrückt kombiniert der Linker nach dem Kompilieren sämtliche Objektdateien (engl. object files) zu einem ausführbaren Programm und berechnet die Adressen von Code und Daten. Bisher waren alle Adressen sog. symbolische Adressen (engl. symbolic adresses). Da der Linker nun das "fertige" Programm kennt, weiß er auch an welcher Stelle später der ausführbare Programmcode als auch die Daten liegen und kann somit die numerischen Adressen (engl. numerical addresses) berechnen. Im Verlauf der Vorlesung greifen wir dies nochmal auf, wenn es darum geht, wie Prozesse ausgeführt werden und wie auf Daten im Speicher zugegriffen wird. 
 
 ## Pointers 
 ## Datenstrukturen 
