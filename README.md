@@ -63,9 +63,87 @@ Testen ob `gcc` installiert ist.
 > compilation terminated.
 ```
 
+[GCC](https://gcc.gnu.org/) bzw. die GNU Compiler Colleciton ist eine Software-Sammlung die es Ihnen erlaubt unter anderem C-Code zu übersetzen. `gcc` ist hierbei der eigentliche C-Compiler, den wir nutzen.
+
 ### C-Programme schreiben
 
-C Programme w
+C Programme lassen sich recht einfach erstellen:
+
+1. C-Code schreiben 
+2. Compilieren und Linken 
+3. Programm ausführen
+
+### Übung 1: Hallo Welt 
+
+#### 1. C-Code schreiben
+
+Wie bei jeder Sprache starten wir mit einem einfach *Hallo Welt* Program.
+Die einzelnen Besandteile des Codes betrachten wir später. Jetzt geht es erstinmal darum, das Programm zum Laufen zu bringen.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    printf("Hallo Welt\n");
+}
+```
+
+**Übungsaufgabe:** 
+ 1. Was passiert, wenn Sie die Zeile `#include <stdio.h>` aus dem Programm entfernen und neu kompilieren. Was bedeutet dies?
+ 2. Warum ist der Rückgabewert der *main*-Methode *int*? An wen übergibt diese Methode den Wert und wo wird dieser zurück gegeben? 
+
+#### 2. Compililieren und Linken
+
+Führen Sie folgenden Befehl auf der Kommandozeile/Shell aus:
+
+```bash
+> gcc hallowelt.c
+```
+
+Werfen Sie einen Blick in das Verzeichnis in dem sich Ihr C-Code befindet. *gcc* hat eine Datei `a.out` erstellt. 
+
+**Übungsaufgaben:** 
+1. Wie müssen Sie *gcc* aufrufen, dass Ihr Programm zum ausführen *hallowelt* heißt? 
+2. Führen Sie *gcc* entsprechend aus um eine Datei Namens *hallowelt* zu erzeugen.
+
+#### 3. Programm ausführen
+
+Starten Sie das Program mit `./hallowelt` und freuen Sie sich über den Erfolg. 
+
+```bash
+> ./hallowelt
+> Hallo Welt
+```
+
+Führen Sie nun folgenden Befehl aus: `./hallowelt && echo "0" || echo "1"`
+
+Sie sollten nun folgendes auf Ihrem Bildschirm sehen: 
+
+```bash
+> ./hallowelt && echo "0" || echo "1"
+> Hallo Welt
+> 0
+```
+
+Zugegben, hier geschieht einiges an "Magic". Zusammengefasst werted dieser Ausdruck den Exit Code des Programms *hallowelt* aus und auf der Schell eine 0 aus, wenn der Exit Code 0 bzw. eine 1, wenn der Exit Code 1 ist. Hierbei handetl es sich um ein besonderes Konstrukt, sogenannter List Constructs, die Sie in Skripten nutzen können. 
+
+Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entwender auf der Konsol oder in einem SKript. 
+
+```bash
+> ./hallowelt
+> Hallo Welt
+> echo $?
+> 0
+```
+
+**Übungsaufgaben**
+1. Führend Sie das Programm *hallowelt* einmal ohne vorgestelltes *./* aus. Sie erhalten (vermutlich) einen Fehler. An was könnte das liegen. Lesen Sie [diesen Artikel](https://linuxundich.de/gnu-linux/uber-die-verwendung-von-in-shell-befehlen/) um das Gehemnis zu lüften.
+2. Lesen Sie [diesen Artikel](https://tldp.org/LDP/abs/html/list-cons.html) um die Funktionsweise von List Constructs 
+2. Schreiben Sie nun zwei C-Programme. Das erste Program gibt *Hallo* aus, das Zweite *Welt*. Das erste Programm liefert als Exit-Code nach erfolgreicher Ausgabe den Code 0. Schreiben Sie nun ein Bash-Script, das zunächst das erste Programm aufruft und danach Programm zwei aufruft. Allerdings nur, wenn des Exit Code des ersten Programms der Code 1 ist. Im anderen Fall gebene Sie einfach das Wort *Error* aus - und zwar ohne Ihre C-Programme abzuändern. 
+
+Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und getartet und außerdem bereits einigies über die Linux Shell und C-Programmierung gelernt. Falls Sie nun die Frage quält, woher das Betriebssystem weiß, dass es beim Starten von *hallowelt* die *main*-Methode aufrufen soll, werden Sie noch einigen Vorlesungseinheiten auf die Folter gespannt. Aber genau diesen Punkt werden werd noch im Laufe der Vorlesung kennen lernen.
+
 
 ## Funktionen 
 ## Pointers 
@@ -76,5 +154,5 @@ C Programme w
 
 ---
 
-![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")
+![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
