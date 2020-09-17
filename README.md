@@ -5,21 +5,20 @@
 Created: 2020/09/16 21:21:48  
 Last modified: 2020/09/16 21:37:12  
 Version: 0.0.0-beta  
+Autor: @aheil
 
 ---
 
 Crashkurs zur Vorlesung Betriebssystem an der Hochschule Heilbronn im Studiengang  Software Engineering Bachelor (SEB). 
 
 Inhalt 
-1. [Dialog](#Dialog)
-2. [Grundlagen](#grundlagen)
-3. [Funktionen](#funktionen)
-4. [Pointers](#pointers)
-5. [Datenstrukturen](#datenstrukturen)
-6. [C-Bibliotheken](#bibliotheken) 
-
-Anhang 
-1. [C Style Guide](#c-style-guide)
+* [Dialog](#Dialog)
+* [Grundlagen](#grundlagen)
+* [Funktionen](#funktionen)
+* [Pointers](#pointers)
+* [Datenstrukturen](#datenstrukturen)
+* [C-Bibliotheken](#bibliotheken) 
+* [Anhang 1: C Style Guide](#c-style-guide)
 ## Ein Dialog über C
 
 
@@ -41,14 +40,41 @@ Anhang
 
 **Student** *OK, aber warum soll ich das jetzt lernen? Ich werde das später in meinem Job doch eh nicht mehr brauchen..."*
 
-**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen,  C-Programme lesen zu können und einfach C-Progammer selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sich weiteres Wissen im C-Umfeld eigenständig aneignen können, sich in eigene Bibliotheken einarbeiten können oder auch beurteilen zu können ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine KOpetenz, die Sie im Studium lernen. Also mehr als nur das Auswendiglernen der Schlüsselworte von C.* 
+**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen,  C-Programme lesen zu können und einfach C-Progammer selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sich weiteres Wissen im C-Umfeld eigenständig aneignen können, sich in eigene Bibliotheken einarbeiten können oder auch beurteilen zu können ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. Soetwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.* 
 
 **Student:** *OK, also wo fange ich da am besten an?*
 
 ## Grundlagen 
+
+### Voraussetzungen
+
+Für die meisten Übungen insbesonere die C-Übungen benötigen Sie ein Linux System. Folgende Optionen können Sie hierfür gleichermaßen nutzen: 
+
+* Sie verwenden bereits Linux (Ubuntu, Debian etc.) ✅
+* Sie verwenden MacOS ✅
+* Sie verwenden [Windows 10 mit Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10) ✅
+* Frühere Windows Version ❌
+
+Testen ob `gcc` installiert ist. 
+
+```shell
+> gcc
+> gcc: fatal error: no input files
+> compilation terminated.
+```
+
+### C-Programme schreiben
+
+C Programme w
+
 ## Funktionen 
 ## Pointers 
 ## Datenstrukturen 
 ## C-Bibliotheken 
 ## Anhang 
 ## C Style Guide 
+
+---
+
+![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")
+This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
