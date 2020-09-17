@@ -91,7 +91,7 @@ int main()
 
 **Übungsaufgabe:** 
  1. Was passiert, wenn Sie die Zeile `#include <stdio.h>` aus dem Programm entfernen und neu kompilieren. Was bedeutet dies?
- 2. Warum ist der Rückgabewert der *main*-Methode *int*? An wen übergibt diese Methode den Wert und wo wird dieser zurück gegeben? 
+ 2. Warum ist der Rückgabewert der *main*-Funktion *int*? An wen übergibt diese Funktion den Wert und wo wird dieser zurück gegeben? 
 
 #### 2. Compililieren und Linken
 
@@ -142,10 +142,94 @@ Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entw
 2. Lesen Sie [diesen Artikel](https://tldp.org/LDP/abs/html/list-cons.html) um die Funktionsweise von List Constructs 
 2. Schreiben Sie nun zwei C-Programme. Das erste Program gibt *Hallo* aus, das Zweite *Welt*. Das erste Programm liefert als Exit-Code nach erfolgreicher Ausgabe den Code 0. Schreiben Sie nun ein Bash-Script, das zunächst das erste Programm aufruft und danach Programm zwei aufruft. Allerdings nur, wenn des Exit Code des ersten Programms der Code 1 ist. Im anderen Fall gebene Sie einfach das Wort *Error* aus - und zwar ohne Ihre C-Programme abzuändern. 
 
-Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und getartet und außerdem bereits einigies über die Linux Shell und C-Programmierung gelernt. Falls Sie nun die Frage quält, woher das Betriebssystem weiß, dass es beim Starten von *hallowelt* die *main*-Methode aufrufen soll, werden Sie noch einigen Vorlesungseinheiten auf die Folter gespannt. Aber genau diesen Punkt werden werd noch im Laufe der Vorlesung kennen lernen.
+Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und getartet und außerdem bereits einigies über die Linux Shell und C-Programmierung gelernt. Falls Sie nun die Frage quält, woher das Betriebssystem weiß, dass es beim Starten von *hallowelt* die *main*-Funktion aufrufen soll, werden Sie noch einigen Vorlesungseinheiten auf die Folter gespannt. Aber genau diesen Punkt werden werd noch im Laufe der Vorlesung kennen lernen.
+
+## Funktionen
+
+### Funktionen in a Nutshell
+
+Funktionen kennt vermutlich jeder noch aus Mathemathik. Bei Funktion der Art 
+
+(1) $y = g(f(x))$
+
+könntnen die Funktionen $g(x)$ und $f(x) $beispielsweise wie folgt aussehen: 
+
+(2) $g : y = x +1$ und $f : y = x *2$ 
+
+In C schreiben wir die Funktion aus (1) folgendermaßen:
+
+```c
+    int x = 5;
+    int y = g(f(x));
+    
+    printf("%d\n", y);
+```
+
+Wenn wir nun das ganze nochmals mit einer *main*-Funktion betrachten, würde der C-Code so aussehen: 
+
+```c
+int main(int argc, char* argv[])
+{
+    long x = (long) argv[1];
+    long y = g(f(x));
+    
+    printf("%ld\n", y);
+}
+```
+
+Und als Formel würden wir das so schreiben: 
+
+(3) $y = main(g(f(x))$
+
+Die Funktionen in C (oder allgemein in Programmiersprachen) funktionieren demnach mehr oder weniger wie Funktionen in der Mathemtik.
+
+### Der Unterschied zwischen Funktionen, Methoden und Prozeduren
+
+Die drei Begriffe Funktion, Prozedur und Methode werden oft unscharf bzw. als Synonym verwendet. Die Meinungen wie diese exakt definieren sind weichen hier durchaus voneinander ab. Grundsätzlich lassen sich die Begriffe wie folgt beschreiben:
+
+* Eine Funktion hat einen Rückgabewert 
+* Eine Prozedur hat keinen Rückgabewert
+* Methoden werden Funktionen oder Prozeduren in der objektortientierten Programmierung genannt
+* In manchen Programmiersprachen wird dann  zwischen *Methoden ohne Rückgabewerten* und *Methoden mit Rückgabewerten* unterschieden
+
+Übungsaufgaben:
+1. Ändern Sie den Rückgabewert der *main*-Funktion des *hallowelt* Programms in *void* und prüfen Sie, ob sich das Programm noch ausführen lässt. Was erkennen Sie? 
+2. Lesen Sie den [Artikel von Bjarne Stroustrup](https://www.stroustrup.com/bs_faq2.html#void-main) bezüglich der Signatur der *main*-Funktion. Verinerlichen Sie dieses Wissen, Sie werden vermtutlich Ihre gesamte Karriere in Situationen kommen, in denen über die Signatru der *main*-Funktion in C diskutiert wird. 
+
+### Funktionsprototyp
+
+Betrachten wir unser Beispiel von zuvor. Die Reihenfolge der Funktionen ist hier nicht willkürlich gewählt. In C ist es erforderlich, dass Funktionen vor deren Verwendung definiert werden.
+
+```c
+#include <stdio.h>
+
+long f(long x)
+{
+    long y = x * 2;
+    return y;
+} 
+
+long g (long x)
+{
+    long y = x + 1;
+    return y; 
+}
+
+int main(int argc, char* argv[])
+{
+    long x = (long) argv[1];
+    long y = g(f(x));
+
+    printf("%ld\n", y);
+}
+```
+
+Übungsaufgaben:
+
+1. Ändern Sie den Code aus dem vorherigen Beispiel so, dass die Implementierung der *main*-Funktion vor *g* und *f* steht. Kompilieren Sie das Programm. Was passiert?
+2. Ändern Sie nochmals das ursprüngliche Prgramm. Löschen Sie dieses Mal die Zeile `#include <stdio.h>`. Kompilieren Sie das Program. Was beobachten Sie? Wie könnte das mit der vorherigen Aufgabe zusammenhängen?
 
 
-## Funktionen 
 ## Pointers 
 ## Datenstrukturen 
 ## C-Bibliotheken 
