@@ -40,8 +40,7 @@ Inhalt
 
 **Student** *OK, aber warum soll ich das jetzt lernen? Ich werde das später in meinem Job doch eh nicht mehr brauchen..."*
 
-**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen,  C-Programme lesen zu können und einfach C-Progammer selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sich weiteres Wissen im C-Umfeld eigenständig aneignen können, sich in eigene Bibliotheken einarbeiten können oder auch beurteilen zu können ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. Soetwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.* 
-
+**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen,  C-Programme lesen zu können und einfache C-Progamme selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sie sich weiteres Wissen im C-Umfeld eigenständig aneignen, sich in eigene Bibliotheken einarbeiten oder auch beurteilen können, ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. Soetwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.*
 **Student:** *OK, also wo fange ich da am besten an?*
 
 ## Grundlagen 
@@ -63,7 +62,7 @@ Testen ob `gcc` installiert ist.
 > compilation terminated.
 ```
 
-[GCC](https://gcc.gnu.org/) bzw. die GNU Compiler Colleciton ist eine Software-Sammlung die es Ihnen erlaubt unter anderem C-Code zu übersetzen. `gcc` ist hierbei der eigentliche C-Compiler, den wir nutzen.
+[GCC](https://gcc.gnu.org/) bzw. die GNU Compiler Collection ist eine Software-Sammlung die es Ihnen erlaubt unter anderem C-Code zu übersetzen. `gcc` ist hierbei der eigentliche C-Compiler, den wir nutzen.
 
 ### C-Programme schreiben
 
@@ -77,8 +76,8 @@ C Programme lassen sich recht einfach erstellen:
 
 #### 1. C-Code schreiben
 
-Wie bei jeder Sprache starten wir mit einem einfach *Hallo Welt* Program.
-Die einzelnen Besandteile des Codes betrachten wir später. Jetzt geht es erstinmal darum, das Programm zum Laufen zu bringen.
+Wie bei jeder Sprache starten wir mit einem einfachen *Hallo Welt* Programm.
+Die einzelnen Besandteile des Codes betrachten wir später. Jetzt geht es zuerst darum, das Programm zum Laufen zu bringen.
 
 ```c
 #include <stdio.h>
