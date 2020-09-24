@@ -370,7 +370,7 @@ Um nun an die Adresse einer Variable zu gelangen greift man auf die Variable mit
 &Variablenname
 ```
 
-und weist dies einem POinter zu. In unsererm Beispiel sieht das dann letztendlich so aus:
+und weist dies einem Pointer zu. In unsererm Beispiel sieht das dann letztendlich so aus:
 
 ```c
 s_ptr = &s;
