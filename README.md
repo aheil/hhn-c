@@ -2,10 +2,10 @@
 
 ---
 
-Created: 2020/09/16 21:21:48  
-Last modified: 2020/09/16 21:37:12  
+Created: 2020/09/16 21:21:48
+Last modified: 2020/09/24 11:52:28
 Version: 0.0.1-beta  
-Autor: [aheil](https://www.github.com/aheil)
+Author: [aheil](https://www.github.com/aheil)
 
 ---
 
@@ -223,7 +223,7 @@ int main(int argc, char* argv[])
 }
 ```
 
-Übungsaufgaben:
+**Übungsaufgaben:**
 
 1. Ändern Sie den Code aus dem vorherigen Beispiel so, dass die Implementierung der *main*-Funktion vor *g* und *f* steht. Kompilieren Sie das Programm. Was passiert?
 2. Ändern Sie nochmals das ursprüngliche Prgramm. Löschen Sie dieses Mal die Zeile `#include <stdio.h>`. Kompilieren Sie das Program. Was beobachten Sie? Wie könnte das mit der vorherigen Aufgabe zusammenhängen?
@@ -251,8 +251,7 @@ long g (long x)
 }
 ```
 
-
-Übungsaufgaben:
+**Übungsaufgaben:**
 
 1. Suchen Sie im Ordner */usr/include* nach der Datei *stdio.h*. Öffnen Sie die Datei und suchen hier nach *printf*. Keine Sorge Sie müssen nicht verstehen, was hier steht. 
 
@@ -292,7 +291,7 @@ void foo()
 }
 ```
 
-Übungsaufgaben:
+**Übungsaufgaben:**
 
 1. Kompilieren Sie das Programm und starten Sie es. Brechen Sie das Programm mit der Tastenkombination <kbd>CTRL</kbd>+<kbd>C</kbd> ab. Was schließen Sie aus der Ausgabe? Scrollen Sie dafür auch zum Beginn der Ausgabe. Lassen Sie das Programm mehrfach laufen und wiederholen Sie Ihre Beobachtungen.
 
@@ -398,8 +397,7 @@ void foo()
 }
 ```
 
-
-Übungsaufgabe:
+**Übungsaufgaben:**
 
 1. Ändern Sie Ihr Programm aus der vorherigen Übung ab, kompilieren Sie es und lassen Sie es laufen. Studieren Sie die Ausgabe. Sind die bisherigen Annahmen hierdurch bestätigt? 
 
@@ -417,6 +415,7 @@ static s = 4, address = 0x7f6c15b4e014
 local  n = 32767, address = 0x7fffc10852a4
 static s = 5, address = 0x7f6c15b4e014
 local  n = 32767, address = 0x7fffc1085274
+...
 ```
 
 Wie wir sehen, liegt die statische Variable *s* immer an der Adresse ```0x7f6c15b4e014```, woggen *x* bei jedem Aufruf an einer neuen Adresse liegt. Das macht auch Sinn, da - obwohl die Variable für uns immer den gleichen Namen hat - diese immer nur in der jeweiligen Funktion gültigkeit hat. Soblad wir aus einer aufgerufenen Funktion wieder zurückkehren würden, würden wir auch wieder auf die voirher genutzt Variable zugreifen können.  
@@ -430,7 +429,7 @@ Nehmen wir die Adresse, an der sich die statische Variable *s* befindet, ```0x7f
 
 ### One More Thing 
 
-Jetzt da geklärt ist, wo die vermissten Bits sind, und wie wir an die Adresse kommen, stellt sich Ihnen vielleicht noch die Frage, was passiert eigentlich, wenn der Reference-Operator auf einen Pointer angewandt wird!? 
+Jetzt da geklärt ist, wo die vermissten Bits sind, und wie wir an die Adresse kommen, stellt sich Ihnen vielleicht noch die Frage, was passiert eigentlich, wenn der Reference-Operator auf einen Pointer angewandt wird! Genau das wollten Sie doch jetyt fragen, oder etwa nicht?
 
 ```c#
 *x_ptr = x;
@@ -438,7 +437,7 @@ Jetzt da geklärt ist, wo die vermissten Bits sind, und wie wir an die Adresse k
 
 Sofern *x_ptr* ein Pointer ist, liefert `*x_ptr`* mit dem Inhalt an der Adresse. Somit lässt ich mittels ```px = x;``` der Inhalt der Variable *X* an die Adresse schreiben, die in x_ptr gespcihert ist. Eingeitnlich einfac, oder?
 
-Zum NAchvollziehen, das folgende Beispiel, in dem wir einige Variableninhalten kopieren. 
+Zum Nachvollziehen, das folgende Beispiel, in dem wir einige Variableninhalten kopieren. 
 
 ```c
 int main()
@@ -469,7 +468,7 @@ int main()
 }
 ```
 
-Übungsaufgabe:
+**Übungsaufgaben:**
 
 1. Kompilierenu und führen Sie das obige Programm aus. Spielen Sie etwas mit den Zuweisungen zwischen Variablen und Pointern herum, um ein Gefühl dafür zu entwickeln, wie sich das Programm verhält. 
 
@@ -485,7 +484,7 @@ An der Stelle sei erwähnt, dass Sie die Übungsaufgaben natürlich nur lesen k�
 ```
 ### C isn't hard
 
-Früher oder später werden Sie über komplexere Ausdrücke mit POintern stolpern. Und vermutlich auch übver folgendes Meme:
+Früher oder später werden Sie über komplexere Ausdrücke mit Pointern stolpern. Und vermutlich auch übver folgendes Meme:
 
 > *void (*(*f[])())()* defines *f* as an 
 > array of unspecified size, of pointers to
