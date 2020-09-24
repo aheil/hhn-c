@@ -4,8 +4,8 @@
 
 Created: 2020/09/16 21:21:48  
 Last modified: 2020/09/16 21:37:12  
-Version: 0.0.0-beta  
-Autor: @aheil
+Version: 0.0.1-beta  
+Autor: [aheil](https://www.github.com/aheil)
 
 ---
 
@@ -158,10 +158,10 @@ könntnen die Funktionen *g(x)* und *f(x)* beispielsweise wie folgt aussehen:
 In C schreiben wir die Funktion aus (1) folgendermaßen:
 
 ```c
-    int x = 5;
-    int y = g(f(x));
+int x = 5;
+int y = g(f(x));
     
-    printf("%d\n", y);
+printf("%d\n", y);
 ```
 
 Wenn wir nun das ganze nochmals mit einer *main*-Funktion betrachten, würde der C-Code so aussehen: 
@@ -251,7 +251,6 @@ long g (long x)
 }
 ```
 
-In der dritten der vorherigen Übungsaufgaben haben Sie einen Funktionsprototyp (engl.) erstellt. D.h. Sie haben die Funktion  getrennt von der Implementierung deklariert. Sie teilen so dem Compiler die Schnittstelle der Funktion mit, so dass er diese verwenden kann. Dies ermöglicht beispielsiwese den Einsatz sogenanntern Single-Pass-Compiler. Leider sind Compiler kein Bestandteil der Betriebssystemvorlesung, weswegen wir hier nicht genauer darauf eingehen.
 
 Übungsaufgaben:
 
@@ -260,6 +259,243 @@ In der dritten der vorherigen Übungsaufgaben haben Sie einen Funktionsprototyp 
 *gcc* weiß, dass die Datei stdio.h im Pfad */usr/include* zu finden ist. Ebenso, wo die Standard C Bibliothek zu finden ist, in der die Funktionen letztendlich definiert sind. Diese liegen je nach System unter */usr/lib/libc*, */lib/libc*, */usr/lib/klibc* o.ä. Der Linker wird als zweiten Schritt ausgeführt, wenn Sie *gcc* aufrufen. Stark vereinfacht ausgedrückt kombiniert der Linker nach dem Kompilieren sämtliche Objektdateien (engl. object files) zu einem ausführbaren Programm und berechnet die Adressen von Code und Daten. Bisher waren alle Adressen sog. symbolische Adressen (engl. symbolic adresses). Da der Linker nun das "fertige" Programm kennt, weiß er auch an welcher Stelle später der ausführbare Programmcode als auch die Daten liegen und kann somit die numerischen Adressen (engl. numerical addresses) berechnen. Im Verlauf der Vorlesung greifen wir dies nochmal auf, wenn es darum geht, wie Prozesse ausgeführt werden und wie auf Daten im Speicher zugegriffen wird. 
 
 ## Pointers 
+
+Dieser Kurs richtet sich insbesondere an unserer zweites Semester. In der Regel haben Sie noch nicht viel mit Pointern zu tun gehabt. Je nach dem wie Ihr späteres Berufsleben aussieht werden Sie es jedoch immer wieder mal, mehr oder weniger oft mit Pointer zu tun bekommen. JE näher Sie übrigens an Hardware arbeiten, desto stärker werden Sie Pointer verfolgen. Warum werden Sie im Verlauf der Vorlesung noch berstehen lernen.
+
+Aber was sind eigentlich Pointer? 
+
+Pointer sind, wie die Übersetzung vermuten lässt, Zeiger. Wenn Sie sich jetzt fragen, worauf diese Pointer zeigen, haben Sie schon einmal richtig mitgedacht. 
+
+### C und Variablen 
+
+Bevor wir uns mit Pointern beschäftigen, schauen wir uns etwas genauer an, was in C mit Variablen passiert. Dafür nehmen wir den folgenden Code. Dieser nutzt ausschließlich Sprachelemente, die wir bisher gelernt haben. Allerdings macht der Code auf den ersten Blick zugegebenerweise nichts sinvolles. 
+
+```c
+#include <stdio.h>
+
+void foo();
+
+int main()
+{
+    foo();
+}
+
+void foo()
+{
+    static int s;
+    int n;
+
+    printf("static s = %d\n", s++);
+    printf("local  n = %d\n", n++);
+
+    foo();
+}
+```
+
+Übungsaufgaben:
+
+1. Kompilieren Sie das Programm und starten Sie es. Brechen Sie das Programm mit der Tastenkombination <kbd>CTRL</kbd>+<kbd>C</kbd> ab. Was schließen Sie aus der Ausgabe? Scrollen Sie dafür auch zum Beginn der Ausgabe. Lassen Sie das Programm mehrfach laufen und wiederholen Sie Ihre Beobachtungen.
+
+Je nach eingesetztem Betriebssystem sehen Sie hier unterschiedliche Ausgaben:
+
+```bash
+> static s = 0    
+> local  n = 32709
+> static s = 1    
+> local  n = 32709
+> static s = 2    
+> local  n = 32767
+> static s = 3    
+> local  n = 0    
+> static s = 4    
+> local  n = 0    
+> static s = 5    
+> local  n = 32767
+...
+```
+
+Auch wenn Ihnen das jetzt erst einmal komisch vorkommen solte, das Programm macht genau das, was es machen soll und verhält sich zwar indeterministisch aber erwartungkonform. 
+Sollten Sie nicht wissen, was indeterministisch. Indeterminismus ist übrigens eines der schlimmsten Dinge, die uns Entwicklern passieren können und machen uns besonders beim Debuggen das Leben schwer. Wenn sich ein so kleines Programm wie oben bereits so verhältt, was ist dann wohl erst bei Programmen mit abertausenden von Zeilen Code?
+
+Aber schauen wir uns nun Schritt für Schritt den Code an, der Ihnen vermutlich nun Kopfzerbrechen bereitet: 
+
+Der Beginn ist trivial: Die *main*-Methode ruft zunächst eine Methode *foo* auf, die sich am Ende selbst wieder aufruft. Falls Sie es im Studium noch nicht gelernt haben, das ist *Rekursion*. 
+
+In der *foo*-Methode wird zunächst mittels ```static int s;``` eine statische Variable *s* definiert.
+
+Statische Variablen gibt es in Ihrem Programm genau einmal. Obwohl die Variable hier in einer Funktion definiert wird, die ettliche Mal aufgerufen wird, wird nur ein einziges Mal für die Variable Speicher allokiert. Wenn in der Zeil der Ausgabe nun die Variable mittels ```s++``` um eins erhöht wird, wird dieser Wert immer an der gleiche Adresse  gelesen und geschrieben. Daher wird der Wert von Aufruf zu Aufruf größer. 
+
+Das die Variable bei 0 anfängt ist kein Zufall, ein Blick in den [C99 Standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf) liefert uns folgende Information:
+
+> If an object that has automatic storage duration is not initialized explicitly, its value is indeterminate. If an object that has static storage duration is not initialized explicitly, then:
+> — if it has pointer type, it is initialized to a null pointer;
+> **— if it has arithmetic type, it is initialized to (positive or unsigned) zero;**
+> — if it is an aggregate, every member is initialized (recursively) according to these rules;
+> — if it is a union, the first named member is initialized (recursively) according to these rules.
+
+Die Variable *s* wird als arrithmetischer Typ also mit 0 initialisiert. 
+
+Anders sieht es nun aber bei der Variable x aus, die mittels ```int x;``` deklariert wird. Vermutlich haben Sie den ersten Satz überlesen, daher schauen wir uns den nochmals genauer an. 
+
+> **If an object that has automatic storage duration is not initialized explicitly, its value is indeterminate.**
+
+Die Variable *x* wird auf dem sogenannten Stack gespeichert. Den Unterschied zwischen Stack und Heap lernen Sie noch im Verlauf der Vorlesung kennen. Wichtig ist jedoch, dass der Speicher für die Variable automatisch auf dem Stack reserviert wird. Und hier liegt der Hase im Pfeffer: Die Variable wird an der nächstbesten Stelle in dem Speicherbereich angelegt, der in unsererm Stack frei ist. Was auch immer in dem Speicher steht, wird nun beim lesenden Zugriff auf die Variable ausgelesen. Diese Idee behalten Sie einmal im Kopf, denn hier nähern wir uns gewissermaßen bereits dem Konzept von Pointern. 
+
+Wenn Sie das Programm unter Windows laufen lassen, könnten Sie Glück haben und die Variable enthält immer den Wert 0. Dies liegt aber nicht an der C-Version unter Windows, sondern an der Tatsache, dass Windows ungenützte Speicherbereiche in seiner Freizeit löscht, indem Sie mit 0 überschrieben werden. Sie sollten aber keine Wette darauf abschließen, dass genau der Speicherbereich, der beim Aufruf der Funktion allokiert wird, bereits aufgeräumt wurde. 
+
+### Pointer definieren und verwenden
+
+Erinnern Sie sich noch an diese Sache mit dem Stack aus dem vorherigen Abschnitt? Versuchen wir einmal heruaszufinden wo im Speicher die Variablen *x* und *s* abgelegt sind. 
+
+Und genau in diesem Moment benötigen wir Pointer. Die zeigen nämlich, und das haben Sie jetzt sicherlich schon vermutet, auf einen Speicherbereich. Pointer sind also nichts anderes als Variablen. Anders als arritmetische Variablen wie ein *Integer* enthält ein Pointer jedoch eine Adresse eines anderen Objektes.
+
+Definiert werden Pointer wie folgt:
+
+```c
+Datentyp *Pointername 
+```
+
+Möchten wir also Pointer für unserer beiden Variablen definieren sieht dies folgermßen aus: 
+
+```c
+int *s_ptr;
+int *n_ptr;
+```
+
+Das *int_* gibt dabei den Datentyp an, dessen Adresse wir wissen wollen, und nicht etwa den Datentyp des Pointers. Dieser richtet sich nach der Rechner-Architektur, also 8-, 16-, 32- oder 64-Bit.  Das Sternchen vor dem Variablennamen heißt übrigens *Reference-* oder *Indirection-Operator*. 
+
+Um nun an die Adresse einer Variable zu gelangen greift man auf die Variable mittes des *Address-Operators* zu:
+
+```c
+&Variablenname
+```
+
+und weist dies einem POinter zu. In unsererm Beispiel sieht das dann letztendlich so aus:
+
+```c
+s_ptr = &s;
+n_ptr = &n;
+```
+
+Alles zusammen können wiur unser Programm nun etwas umschreiben: 
+
+```c
+void foo()
+{
+    static int s;
+    int n;
+
+    int *s_ptr;
+    int *n_ptr;
+
+    s_ptr = &s;
+    n_ptr = &n;
+
+    printf("static s = %d, address =%p\n", s++, s_ptr);
+    printf("local  n = %d, address =%p\n", n++, n_ptr);
+
+    foo();
+}
+```
+
+
+Übungsaufgabe:
+
+1. Ändern Sie Ihr Programm aus der vorherigen Übung ab, kompilieren Sie es und lassen Sie es laufen. Studieren Sie die Ausgabe. Sind die bisherigen Annahmen hierdurch bestätigt? 
+
+
+```bash
+static s = 0, address = 0x7f6c15b4e014
+local  n = 32620, address = 0x7fffc1085364
+static s = 1, address = 0x7f6c15b4e014
+local  n = 0, address = 0x7fffc1085334
+static s = 2, address = 0x7f6c15b4e014
+local  n = 0, address = 0x7fffc1085304
+static s = 3, address = 0x7f6c15b4e014
+local  n = 0, address = 0x7fffc10852d4
+static s = 4, address = 0x7f6c15b4e014
+local  n = 32767, address = 0x7fffc10852a4
+static s = 5, address = 0x7f6c15b4e014
+local  n = 32767, address = 0x7fffc1085274
+```
+
+Wie wir sehen, liegt die statische Variable *s* immer an der Adresse ```0x7f6c15b4e014```, woggen *x* bei jedem Aufruf an einer neuen Adresse liegt. Das macht auch Sinn, da - obwohl die Variable für uns immer den gleichen Namen hat - diese immer nur in der jeweiligen Funktion gültigkeit hat. Soblad wir aus einer aufgerufenen Funktion wieder zurückkehren würden, würden wir auch wieder auf die voirher genutzt Variable zugreifen können.  
+
+
+### Exkurs: Auf der Suche nach den verlorenen 16 Bit.
+
+Die Adressen werdne hier als Headezimal-Werte ausgegeben. 
+
+Nehmen wir die Adresse, an der sich die statische Variable *s* befindet, ```0x7f6c15b4e014``` und rechnen diese um in Bit kommen wir auf den Wert ```0111 1111 0110 1100 0001 0101 1011 0100 1110 0000 0001 0100```. Wer nun zählt, findet hier *nur* 48 Bit. Das sind weder 32 noch 64, wie man vermuten möchte.  Im vorliegenden Fall wurde das tatsächlich auf einem 64-Bit Windows System ausgeführt. Allerdings werden bei gängigen 64-Bit CPUs nur 48 der theoretischen 64 Bit zur Addressierung eines Addressraums eines Prozesses genutzt. Konkret bedeutet dies, dass der Adressraum eines Prozesses kleiner ist, als er sein könnte. Was das genau bedeutet lernen Sie im Verlauf der Vorlesung noch genauer kennen, wenn wir uns mit Prozessen und Adressräumen befassen.
+
+### One More Thing 
+
+Jetzt da geklärt ist, wo die vermissten Bits sind, und wie wir an die Adresse kommen, stellt sich Ihnen vielleicht noch die Frage, was passiert eigentlich, wenn der Reference-Operator auf einen Pointer angewandt wird!? 
+
+```c#
+*x_ptr = x;
+```
+
+Sofern *x_ptr* ein Pointer ist, liefert `*x_ptr`* mit dem Inhalt an der Adresse. Somit lässt ich mittels ```px = x;``` der Inhalt der Variable *X* an die Adresse schreiben, die in x_ptr gespcihert ist. Eingeitnlich einfac, oder?
+
+Zum NAchvollziehen, das folgende Beispiel, in dem wir einige Variableninhalten kopieren. 
+
+```c
+int main()
+{
+   int x;
+   int *x_ptr;
+   
+    x = 5;
+    x_ptr = &x;
+
+    printf("x = %d\n", x);
+    printf("&x_ptr = %p\n", x_ptr);
+
+    int y;
+    int *y_ptr;
+
+    y = 6;
+    y_ptr = &y;
+    *x_ptr = y;
+
+    printf("x = %d\n", *x_ptr);
+    printf("&x_ptr = %p\n", x_ptr);
+
+    *y_ptr = 7;
+
+    printf("y = %d\n", *y_ptr);
+    printf("&y_ptr = %p\n", y_ptr);
+}
+```
+
+Übungsaufgabe:
+
+1. Kompilierenu und führen Sie das obige Programm aus. Spielen Sie etwas mit den Zuweisungen zwischen Variablen und Pointern herum, um ein Gefühl dafür zu entwickeln, wie sich das Programm verhält. 
+
+An der Stelle sei erwähnt, dass Sie die Übungsaufgaben natürlich nur lesen können und den damit verbundenen *Arbeitsauftrag* ignorieren können. Aber Sie werden Programmieren nur durch Programmieren lernen. Nicht durch lesen, wie man programmiert. Wenn Sie dem vorherigen Hinweis nachgekommen sind, sollten Sie folgende Ausgabe auf dem Bildschirm sehen.
+
+```bash
+> x = 5
+> &x_ptr = 0x7fffe6a99500
+> x = 6
+> &x_ptr = 0x7fffe6a99500
+> y = 7
+> &y_ptr = 0x7fffe6a99504
+```
+### C isn't hard
+
+Früher oder später werden Sie über komplexere Ausdrücke mit POintern stolpern. Und vermutlich auch übver folgendes Meme:
+
+> *void (*(*f[])())()* defines *f* as an 
+> array of unspecified size, of pointers to
+> functions that return pointers to functions that
+> return *void*.
+
+Verzweifeln Sie nicht, und - viel wichtiger - ignorieren sie den Ausdruck nicht. Es gibt zahlreiche Anleitungen wie sie [komplexe Popinter-Anweisungen entschlüsseln](https://www.codementor.io/@dankhan/how-to-easily-decipher-complex-pointer-declarations-cpp-so24b66me). Üben Sie strukturiert vorzugehen und versuchen Sie den Ausdruck Stück für Stück zu verstehen.
+
+Für die Beispiel, Aufgaben und Übungen in der Vorlesung werden Ihnen die obigen Anweisungen ausreichen. Der Rest kommt durch Übung. 
+
 ## Datenstrukturen 
 ## C-Bibliotheken 
 ## Anhang 
@@ -267,5 +503,5 @@ In der dritten der vorherigen Übungsaufgaben haben Sie einen Funktionsprototyp 
 
 ---
 
-![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
-This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+![https://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
