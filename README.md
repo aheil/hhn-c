@@ -1,7 +1,7 @@
 # C Crashkurs
 
 ---
-Last modified: 2020/09/27 01:49:03
+Last modified: 2020/09/27 01:50:57
   Created: 2020/09/16 21:21:48  
 Version: 0.0.3-beta  
 Author: [aheil](https://www.github.com/aheil)  
@@ -37,9 +37,10 @@ Inhalt
 
 **Professor:** *Um die grundlegenden Konzepte, insbesondere im Umgang mit Speicher zu verdeutlichen, greifen wir nunmal in der Vorlesung Betriebssysem auf die Programmiersprache C zurück. Im Laufe der Verantaltung werden darüber hinaus einige Übungen mit Hardware druchgeführt. Auch hier ist es aus pragmatischen Gründen naheliegend mit der Hardware mit C zu sprechen. In anderen Vorlesungen wird auch kein Code auf einem ESP32 deployed...Außerden, Sie studieren Software Engineering, da sollte es Ihnen halbwegs Spaß machen etwas zu programmieren...*
 
-**Student** *OK, aber warum soll ich das jetzt lernen? Ich werde das später in meinem Job doch eh nicht mehr brauchen..."*
+**Student:** *OK, aber warum soll ich das jetzt lernen? Ich werde das später in meinem Job doch eh nicht mehr brauchen..."*
 
 **Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen, C-Programme lesen zu können und einfache C-Progamme selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sie sich weiteres Wissen im C-Umfeld eigenständig aneignen, sich in eigene Bibliotheken einarbeiten oder auch beurteilen können, ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. Soetwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.*
+
 **Student:** *OK, also wo fange ich da am besten an?*
 
 ## Grundlagen 
