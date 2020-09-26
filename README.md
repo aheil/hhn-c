@@ -1,11 +1,11 @@
 # C Crashkurs
 
 ---
+Last modified: 2020/09/27 01:39:09
+Created: 2020/09/16 21:21:48  
 
-Created: 2020/09/16 21:21:48
-Last modified: 2020/09/24 11:52:28
-Version: 0.0.1-beta  
-Author: [aheil](https://www.github.com/aheil)
+Version: 0.0.2-beta  
+Author: [aheil](https://www.github.com/aheil)  
 
 ---
 
@@ -19,8 +19,8 @@ Inhalt
 * [Datenstrukturen](#datenstrukturen)
 * [C-Bibliotheken](#bibliotheken) 
 * [Anhang 1: C Style Guide](#c-style-guide)
-## Ein Dialog über C
 
+## Ein Dialog über C
 
 **Professor:** *Systemnahe Programmierung findet oft mittels der Programmiersprach C statt. Urspung hat C in der Entwicklung des UNIX Kernels, der zuvor direkt mit Assembler entwicklet wurde. Gegen Ende des 20 Jhd. wurden zahlreiche Programme in C entwickelt. Neben UNIX entwicklete Oracle seine Datenbanken in C und auch Windows 1.0 wurde in C entwicklet.* 
 
@@ -326,11 +326,11 @@ Statische Variablen gibt es in Ihrem Programm genau einmal. Obwohl die Variable 
 
 Das die Variable bei 0 anfängt ist kein Zufall, ein Blick in den [C99 Standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf) liefert uns folgende Information:
 
-> If an object that has automatic storage duration is not initialized explicitly, its value is indeterminate. If an object that has static storage duration is not initialized explicitly, then:
-> — if it has pointer type, it is initialized to a null pointer;
-> **— if it has arithmetic type, it is initialized to (positive or unsigned) zero;**
-> — if it is an aggregate, every member is initialized (recursively) according to these rules;
-> — if it is a union, the first named member is initialized (recursively) according to these rules.
+> If an object that has automatic storage duration is not initialized explicitly, its value is indeterminate. If an object that has static storage duration is not initialized explicitly, then:  
+> — if it has pointer type, it is initialized to a null pointer;  
+> **— if it has arithmetic type, it is initialized to (positive or unsigned) zero;**  
+> — if it is an aggregate, every member is initialized (recursively) according to these rules;  
+> — if it is a union, the first named member is initialized (recursively) according to these rules.  
 
 Die Variable *s* wird als arrithmetischer Typ also mit 0 initialisiert. 
 
@@ -470,9 +470,8 @@ int main()
 
 **Übungsaufgaben:**
 
-1. Kompilierenu und führen Sie das obige Programm aus. Spielen Sie etwas mit den Zuweisungen zwischen Variablen und Pointern herum, um ein Gefühl dafür zu entwickeln, wie sich das Programm verhält. 
+1. Kompilieren und führen Sie das obige Programm aus. Spielen Sie etwas mit den Zuweisungen zwischen Variablen und Pointern herum, um ein Gefühl dafür zu entwickeln, wie sich das Programm verhält. 
 
-An der Stelle sei erwähnt, dass Sie die Übungsaufgaben natürlich nur lesen können und den damit verbundenen *Arbeitsauftrag* ignorieren können. Aber Sie werden Programmieren nur durch Programmieren lernen. Nicht durch lesen, wie man programmiert. Wenn Sie dem vorherigen Hinweis nachgekommen sind, sollten Sie folgende Ausgabe auf dem Bildschirm sehen.
 
 ```bash
 > x = 5
@@ -496,6 +495,205 @@ Verzweifeln Sie nicht, und - viel wichtiger - ignorieren sie den Ausdruck nicht.
 Für die Beispiel, Aufgaben und Übungen in der Vorlesung werden Ihnen die obigen Anweisungen ausreichen. Der Rest kommt durch Übung. 
 
 ## Datenstrukturen 
+
+Im Verlauf der Vorlesung werden wir sehen, wie man ein laufendes Programm im Rechner (wir nennen das später Prozesse) mit Sack und Pack pausieren, auf die Fetsplatte schreiben und später wieder laden und starten kann. Verrückte Sache, wenn man sich überlegt ein Programm irgendwo in seinem Ablauf anzuhalten und so auf die Festplatte zu schreiben, dass man es später wieder laden kann und es exakt an der Stelle weiterläuft, an der man es angehalten hat, ohne dass das Programm davon etwas merkt. Um das zu erreichne benötigen wir einige Informationen. Exemplarisch definieren wir einige Prozessbestandteile im folgenden Code-Beispiel:
+
+```c
+char name[16];
+int procstate;
+int inode;
+...
+```
+
+Wollen wir zwei solche Prozesse verwalten könntne nun so etwas schreiben:
+
+```c
+char name1[16];
+int procstate1;
+int inode1;
+...
+char name2[16];
+int procstate2;
+int inode2;
+...
+```
+
+Das würde zwar gehen, aber bei 1024 Prozessen werden Sie jetzt aber keinen Spass mehr haben.
+
+### Arrays
+
+Sobald wir also ein multi-tasking fähigens Betriebssystem (weir lernen später was das genau ist) nutzen benötigen wir noch viel mehr von diesen Daten. Eine Möglichkeit wäre also, wir legen uns *Arrays* von jedem Element an. Dabei gehören jeweils alle Atttribute mit dem gleichen Index zusammen. Wollen wir also 1024 Prozesse verwalte, sähe das ungefär so aus: 
+
+```c
+char name[16][1024];
+int procstate[1024];
+int inode[1024];
+```
+
+Bevor wir weitermachen schauen wir uns aber hier nochmals diese Sache mit den eckigen Klammern an. Solche sog. *Arrays* sollten Ihnen hoffentlich aus den Programmier-Vorlesungenn noch bekannt sein. Falls nicht, nehme wir einmal das Beispiel von oben. Möchten Sie mehrere Prozessstatus - ob Sie es glauben oder nicht, die Mehrzahl von Status ist Status! Nicht Stati, nicht Statuse oder irgendetwas anderes. Merken Sie sich das hier und jetzt. Dann haben Sie etwas für's Leben gelernt, auch wenn die Sache mit dem Programmieren nichts wird. Also wo waren wir? Mehrere Status. Also der Code Cazu: 
+
+```c
+int procstate1;
+int procstate2;
+int procstate3;
+...
+int procstate1024:
+```
+
+Sie merken schon, so macht Programmieren kein Spass. Vermutlich nur aus diesem Grund hat man in C (und eigentlich in allen anderen Programmiersprachen) Arrays eingeführt, das sind mehrer, aneinanderhängende Variablen des gleichen Typs, die sich über Ihren Index adressieren lassen. Der INdex steht in der eckicken Klammer und gibt die Stelle im Array an. Normal fangen wir dabei *immer* bei bei nur an zu Zählen. Außer in Visual Basic. 
+
+```c
+int procstate[1024];
+
+procstate[0] = 2;
+procstate[1] = 3;
+
+printf("proc 1 state = %d\n", procstate[0]);
+printf("proc 2 state = %d\n", procstate[1]);
+...
+```
+
+**Übungsaufgaben:**
+1. Erweitern Sie das Programm, fügen Sie weiteren Feldern im Array Werte hinzu und lassen Sie sich diese ausgeben. 
+2. Lassen Sie sich alle Werte im Array ausgeben, was erwarten Sie? WErfen Sie nochmals einen Blick in den Anfang des Abschnitts *C und Variablen*. Bei Arrays handelt es sich um sog. *Aggregates*.
+
+Auch wenn Sie nun Arrays im Griff haben, richtig gut lassen sich damit viele Daten nicht sonderlich grut strukturieren.
+
+*Structs*
+
+Zum Glück hat C etwas, mit dem wir Variablen zusammenfassen können. Mit dem Schlüsselwort `strcut` lassen sich ebensolche Strucutres (oder auf Deutsch ein Verbund) erstellen.
+
+```c
+struct proc
+{
+    char name[16];
+    int procstate;
+    int inode;
+};
+```
+
+Im Prinzip handelt es sich dabei um einen zusammengesetzen Datentyp. Wenn Sie im vergangenen Semester breits Java gelernt haben - eine Klasse in Java ist im Grunde das gleiche. Naja, nicht ganz das gleiche, und eigentlich noch nichtmal annähernd das Gleiche aber die Grundidee ist gleich. Sie fassen mehrere Felder zu einem "Ding" zusammen.
+
+Wird die Structure wie oben definiert, wird noch kein Speicher allokiert. D.h. Sie sagen dem Kompiler nur, dass es so eine Struktur geben solle. Sie können nun explizit via `proc foo;´  den Speicher für dies Struktur allokieren (Achtung! Was auch immerdort im Speicher steht, steht jetzt in dieser Struktur!) oder dies schon bei der Deklaration erledigen. 
+
+int main()
+{
+    struct proc {
+        char name[16];
+        int procstate;
+        int inode;
+    } proc[1024];
+
+    proc[0].procstate = 3 ;
+    proc[1].procstate = 4 ;
+
+    printf("proc 1 state = %d\n", proc[0].procstate);
+    printf("proc 2 state = %d\n", proc[1].procstate);
+}
+
+Auf den Inhalt der Felder greifen Sie mit einem Punkt (engl. dot operator) `.` zu, wenn Sie nicht die Struct selbst kennen, sondern nur einen Poonter darauf kennen, erhalten Sie über einen Pfeil`->` (engl. arrow operator) darauf zugriff - letzertes wird manchmal auf "member by pointer" genannt. 
+
+Das folgende Beispiel verdeutlicht die Funktionsweise.
+
+```c
+struct proc {
+    char name[16];
+    int procstate;
+    int inode;
+} proc[1024];
+
+proc[0].procstate = 3 ;
+
+printf("proc 0 at address %p, state = %d\n", &proc[0], (&proc[0])->procstate);
+```
+
+Obige Zeilen ergeben nun eine Ausgabe der Form 
+
+```bash
+> proc 0 at address 0x7fffd112d050, state = 3
+```
+
+auf dem Bildschirm. 
+
+Zum Abschluss schauen wir uns noch ein kleines Programm an, wo wir den *arrow operator* tatsächlich benötigen. 
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    struct proc {
+        char name[16];
+        int procstate;
+        int inode;
+    };
+
+    struct proc* p = NULL;
+
+    p = (struct proc*)
+        malloc(sizeof(struct proc));
+
+    p->procstate = 42;
+
+    printf("proc 0 at address %p, state = %d\n", p, p->procstate);
+} 
+```
+
+Wie zuvor deklarieren wir eine Strucutre, definiren diesesmal aber keine Array. Anstelle dessen definieren wir lediglich einen Pointer der für ein Prozesse genutzt werden soll. Den Speicher reservieren wir über einen Funktionsaufruf *malloc*. Diese Funktion ist in der C-Standardbilbiothek deklariert *stdlib.h*, weswegen wir diese mit einem *include* hinzufügen müssen. Da *p* dieses Mal ein Pointer ist, müssen wir mit dem arrow operator auf *procstate* zugreifen. 
+
+**Übungsaufgaben:**
+1. Entfernen Sie die Zeile `p = ...` aus Ihrem Code, kompilieren Sie das Programm und starten Sie es. Es wird ein Fehler auftreten, notieren Sie sich den Fehler. Wir kommen später im Laufe der Vorlesung nochmals auf diesen Fehler zu sprechen. 
+2. Machen Sie 1. nochmals rückgängig und ändern Sie anstelle dessen die Zeile ` p->procstate = 42;` in ` p.procstate = 42;`. Kompilieren Sie das Programm und freuen Sie sich, dass Sie  die Fehlermeldung verstehen.
+3. Ändern Sie die Zeile `struct proc* p = NULL;` in `struct proc *p = NULL;`, kompilieren Sie das Programm und starten Sie es. Was können Sie beobachten?
+
+### xv6
+
+Zu Recht fragen Sie sich jetzt vielleicht, weswegen Sie das alles lernen sollen. Im Verlauf der Vorlesung Betriebssysteme werden wir uns mit einer Implementierung eines Betriebssystems, dem xv6 System beschäftigen. Hier wird uns insbesondere die Implementierung von Prozessen interessieren (das sollte Sie kaum überraschen): 
+
+```c
+// Per-process state
+struct proc {
+  uint sz;                     // Size of process memory (bytes)
+  pde_t* pgdir;                // Page table
+  char *kstack;                // Bottom of kernel stack for this process
+  enum procstate state;        // Process state
+  volatile int pid;            // Process ID
+  struct proc *parent;         // Parent process
+  struct trapframe *tf;        // Trap frame for current syscall
+  struct context *context;     // swtch() here to run process
+  void *chan;                  // If non-zero, sleeping on chan
+  int killed;                  // If non-zero, have been killed
+  struct file *ofile[NOFILE];  // Open files
+  struct inode *cwd;           // Current directory
+  struct shared *shared;       // Shared memory record (0 -> none)
+  char name[16];               // Process name (debugging)
+};
+```
+
+**Übungsausfgaben:*
+1. Gehen Sie Zeile für Zeile durch die obige Structure und verstehen Sie jedes einzelne Konstrukt. Den Inhalt bzw. die Semantik der einzelnen Einträge können Sie zum jetzigen Zeitpunkt ignorieren. Verstehen Sie jedoch die Syntax welche sich hinter jeden einzelnen Zeile verbirgt.
+
+### One mote Thing
+
+In der vorletzen Übungsaufgabe sollten Sie in der dritten Aufgabe das `\*` verschieben. Falls Sie die Übung nicht gemacht haben, wird hier nicht gespoilert was passiert ist. Probieren Sie es einmal aus! Sie werden überrascht sein! Um zu verstehen was hier passiert schauen wir uns ein weiteres Beispiel an: 
+
+
+```c
+int* p1, p2;
+```
+
+Wenn Sie bisher wenig mit oder nichts mit C zu tun hatten, werden Sie nun vermutlich überrascht sein, dass *p2* kein *int\** ist. 
+Tatsächlich ist in diesem Beispiel `p1` ein Pointer für ein *int* und `p2` ein *int*. 
+Die Schreibweise suggeriert jedoch, dass es sich um zwei Pointer handelt. Tatsächlich ist es dem Compiler egal ob das Leerzeichen (engl. whitespace) linke oder rechts steht. Sie können es sogar ganz weglassen. Die geschicktere Schreibweise ist daher:
+
+```c
+int *p1, p2;
+```
+
+Die Verwirrung tritt eigentlich nur auf, wenn Sie versuchen mehrer Variablen in einer Zeile zu deklarieren. Und ob Sie es glauben oder nicht: Sie sind nicht der(die) erste (angehende) Programmierer*in, die [über dieses "Problem" stolpert](https://www.stroustrup.com/bs_faq2.html#whitespace).
+
+
 ## C-Bibliotheken 
 ## Anhang 
 ## C Style Guide 
