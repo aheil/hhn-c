@@ -1,10 +1,9 @@
 # C Crashkurs
 
 ---
-Last modified: 2020/09/27 01:39:09
-Created: 2020/09/16 21:21:48  
-
-Version: 0.0.2-beta  
+Last modified: 2020/09/27 01:49:03
+  Created: 2020/09/16 21:21:48  
+Version: 0.0.3-beta  
 Author: [aheil](https://www.github.com/aheil)  
 
 ---
@@ -649,7 +648,7 @@ Wie zuvor deklarieren wir eine Strucutre, definiren diesesmal aber keine Array. 
 
 ### xv6
 
-Zu Recht fragen Sie sich jetzt vielleicht, weswegen Sie das alles lernen sollen. Im Verlauf der Vorlesung Betriebssysteme werden wir uns mit einer Implementierung eines Betriebssystems, dem xv6 System beschäftigen. Hier wird uns insbesondere die Implementierung von Prozessen interessieren (das sollte Sie kaum überraschen): 
+Zu Recht fragen Sie sich jetzt vielleicht, weswegen Sie das alles lernen sollen. Und tatsächlich fällt es einem leichter etwas zu lernen, wenn man weiß, wozu man dies tut. Daher verrate ich Ihnen jetzt: Im Verlauf der Vorlesung Betriebssysteme werden wir uns mit einer Implementierung eines Betriebssystems, dem xv6 System beschäftigen. Hier wird uns insbesondere die Implementierung von Prozessen interessieren (das sollte Sie vermutlich  kaum überraschen): 
 
 ```c
 // Per-process state
@@ -671,27 +670,27 @@ struct proc {
 };
 ```
 
-**Übungsausfgaben:*
+**Übungsausfgaben:**
 1. Gehen Sie Zeile für Zeile durch die obige Structure und verstehen Sie jedes einzelne Konstrukt. Den Inhalt bzw. die Semantik der einzelnen Einträge können Sie zum jetzigen Zeitpunkt ignorieren. Verstehen Sie jedoch die Syntax welche sich hinter jeden einzelnen Zeile verbirgt.
 
-### One mote Thing
+### One more Thing
 
-In der vorletzen Übungsaufgabe sollten Sie in der dritten Aufgabe das `\*` verschieben. Falls Sie die Übung nicht gemacht haben, wird hier nicht gespoilert was passiert ist. Probieren Sie es einmal aus! Sie werden überrascht sein! Um zu verstehen was hier passiert schauen wir uns ein weiteres Beispiel an: 
+In der vorletzen Übungsaufgabe sollten Sie in der dritten Aufgabe das `*` verschieben. Falls Sie die Übung nicht gemacht haben, wird hier nicht gespoilert was passiert ist. Probieren Sie es einmal aus! Sie werden überrascht sein! Um zu verstehen was hier passiert schauen wir uns ein weiteres Beispiel an: 
 
 
 ```c
 int* p1, p2;
 ```
 
-Wenn Sie bisher wenig mit oder nichts mit C zu tun hatten, werden Sie nun vermutlich überrascht sein, dass *p2* kein *int\** ist. 
+Wenn Sie bisher wenig mit oder nichts mit C zu tun hatten, werden Sie nun vermutlich überrascht sein, dass `p2` kein *int\** ist. 
 Tatsächlich ist in diesem Beispiel `p1` ein Pointer für ein *int* und `p2` ein *int*. 
-Die Schreibweise suggeriert jedoch, dass es sich um zwei Pointer handelt. Tatsächlich ist es dem Compiler egal ob das Leerzeichen (engl. whitespace) linke oder rechts steht. Sie können es sogar ganz weglassen. Die geschicktere Schreibweise ist daher:
+Die Schreibweise suggeriert jedoch, dass es sich um zwei Pointer handelt. Tatsächlich ist es dem Compiler egal ob das Leerzeichen (engl. whitespace) links oder rechts steht. Sie können es sogar ganz weglassen. Die geschicktere Schreibweise ist daher:
 
 ```c
 int *p1, p2;
 ```
 
-Die Verwirrung tritt eigentlich nur auf, wenn Sie versuchen mehrer Variablen in einer Zeile zu deklarieren. Und ob Sie es glauben oder nicht: Sie sind nicht der(die) erste (angehende) Programmierer*in, die [über dieses "Problem" stolpert](https://www.stroustrup.com/bs_faq2.html#whitespace).
+Die Verwirrung tritt eigentlich nur auf, wenn Sie versuchen mehrer Variablen in einer Zeile zu deklarieren. Und ob Sie es glauben oder nicht: Sie sind nicht der/die erste (angehende) Programmierer*in, die [über dieses "Problem" stolpert](https://www.stroustrup.com/bs_faq2.html#whitespace).
 
 
 ## C-Bibliotheken 
