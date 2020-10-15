@@ -1,7 +1,7 @@
 # C Crashkurs
 
 ---
-Last modified: 2020/10/15 23:10:32
+Last modified: 2020/10/15 23:41:58
   Created: 2020/09/16 21:21:48  
 Version: 0.0.4  
 Author: [aheil](https://www.github.com/aheil)  
@@ -21,9 +21,9 @@ Inhalt
 
 ## Ein Dialog über C
 
-**Professor:** *Systemnahe Programmierung findet oft mittels der Programmiersprach C statt. Urspung hat C in der Entwicklung des UNIX Kernels, der zuvor direkt mit Assembler entwicklet wurde. Gegen Ende des 20 Jhd. wurden zahlreiche Programme in C entwickelt. Neben UNIX entwicklete Oracle seine Datenbanken in C und auch Windows 1.0 wurde in C entwicklet.* 
+**Professor:** *Systemnahe Programmierung findet oft mittels der Programmiersprach C statt. Ursprung hat C in der Entwicklung des UNIX Kernels, der zuvor direkt mit Assembler entwickelt wurde. Gegen Ende des 20 Jhd. wurden zahlreiche Programme in C entwickelt. Neben UNIX entwickelte Oracle seine Datenbanken in C und auch Windows 1.0 wurde in C entwickelt.* 
 
-*Heute finden wir C noch immer in den Kerneln der Betriebssysteme Mac OS, Linux und Windows, in den mobilen Betriebssystemen Andriod, iOS und Windows Phone. Aber auch  Anwendungen wie MySQL oder dem Microsoft SQL Server sind in C (und C++) entwickelt.*
+*Heute finden wir C noch immer in den Kernel der Betriebssysteme Mac OS, Linux und Windows, in den mobilen Betriebssystemen Android, iOS und Windows Phone. Aber auch  Anwendungen wie MySQL oder dem Microsoft SQL Server sind in C (und C++) entwickelt.*
 
 *C findet sich außerdem oft in eingebetteten Systemen (engl. embedded systems) wieder.* 
 
@@ -33,13 +33,13 @@ Inhalt
 
 *Zugegeben, es gibt einige Einschränkungen, die es doch nicht so einfach machen überall quasi alles zu schreiben und zu lesen und das ganze birgt auch einige Gefahren. Aber gegenüber höheren Sprachen, die das Speichermanagement vor dem Entwickler überwiegend verbergen, lässt uns C direkt und ohne Umwege mit dem Speicher sprechen und ist für ein Betriebssystem (dessen Hauptaufgabe unter anderem die Kommunikation mit dem Speicher ist) mehr als geeignet.*
 
-**Student:** *Aber warum nutzen wir in der Vorlesung überhaupt C? Warum soll ich jetzt plötzlich C lernen? Geht das nicht ganz ohne Programmieren? Andere Vorlesungen zum Thema Betriebssystem progammieren doch auch kein C!*
+**Student:** *Aber warum nutzen wir in der Vorlesung überhaupt C? Warum soll ich jetzt plötzlich C lernen? Geht das nicht ganz ohne Programmieren? Andere Vorlesungen zum Thema Betriebssystem programmieren doch auch kein C!*
 
-**Professor:** *Um die grundlegenden Konzepte, insbesondere im Umgang mit Speicher zu verdeutlichen, greifen wir nunmal in der Vorlesung Betriebssysteme auf die Programmiersprache C zurück. Im Laufe der Veranstaltung werden darüber hinaus einige Übungen mit Hardware druchgeführt. Auch hier ist es aus pragmatischen Gründen naheliegend mit der Hardware mit C zu sprechen. In anderen Vorlesungen wird ja auch kein Code auf einem ESP32 deployed...Außerdem, Sie studieren Software Engineering, da sollte es Ihnen halbwegs Spaß machen etwas zu programmieren...*
+**Professor:** *Um die grundlegenden Konzepte, insbesondere im Umgang mit Speicher zu verdeutlichen, greifen wir nunmal in der Vorlesung Betriebssysteme auf die Programmiersprache C zurück. Im Laufe der Veranstaltung werden darüber hinaus einige Übungen mit Hardware durchgeführt. Auch hier ist es aus pragmatischen Gründen naheliegend mit der Hardware mit C zu sprechen. In anderen Vorlesungen wird ja auch kein Code auf einem ESP32 deployed...Außerdem, Sie studieren Software Engineering, da sollte es Ihnen halbwegs Spaß machen etwas zu programmieren...*
 
 **Student:** *OK, aber warum soll ich das jetzt lernen? Ich werde das später in meinem Job doch eh nicht mehr brauchen..."*
 
-**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen, C-Programme lesen zu können und einfache C-Progamme selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sie sich weiteres Wissen im C-Umfeld eigenständig aneignen, sich in eigene Bibliotheken einarbeiten oder auch beurteilen können, ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. So etwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.*
+**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen, C-Programme lesen zu können und einfache C-Programme selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sie sich weiteres Wissen im C-Umfeld eigenständig aneignen, sich in eigene Bibliotheken einarbeiten oder auch beurteilen können, ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. So etwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.*
 
 **Student:** *OK, also wo fange ich da am besten an?*
 
@@ -47,7 +47,7 @@ Inhalt
 
 ### Voraussetzungen
 
-Für die meisten Übungen insbesonere die C-Übungen benötigen Sie ein Linux System. Folgende Optionen können Sie hierfür gleichermaßen nutzen: 
+Für die meisten Übungen insbesondere die C-Übungen benötigen Sie ein Linux System. Folgende Optionen können Sie hierfür gleichermaßen nutzen: 
 
 * Sie verwenden bereits Linux (Ubuntu, Debian etc.) ✅
 * Sie verwenden MacOS ✅
@@ -77,7 +77,7 @@ C Programme lassen sich recht einfach erstellen:
 #### 1. C-Code schreiben
 
 Wie bei jeder Sprache starten wir mit einem einfachen *Hallo Welt* Programm.
-Die einzelnen Besandteile des Codes betrachten wir später. Jetzt geht es zuerst darum, das Programm zum Laufen zu bringen.
+Die einzelnen Bestandteile des Codes betrachten wir später. Jetzt geht es zuerst darum, das Programm zum Laufen zu bringen.
 
 ```c
 #include <stdio.h>
@@ -92,7 +92,7 @@ int main()
  1. Was passiert, wenn Sie die Zeile `#include <stdio.h>` aus dem Programm entfernen und neu kompilieren. Was bedeutet dies?
  2. Warum ist der Rückgabewert der *main*-Funktion *int*? An wen übergibt diese Funktion den Wert und wo wird dieser zurück gegeben? 
 
-#### 2. Compililieren und Linken
+#### 2. Compilieren und Linken
 
 Führen Sie folgenden Befehl auf der Kommandozeile/Shell aus:
 
@@ -125,9 +125,9 @@ Sie sollten nun folgendes auf Ihrem Bildschirm sehen:
 > 0
 ```
 
-Zugegben, hier geschieht einiges an "Magic". Zusammengefasst werted dieser Ausdruck den Exit Code des Programms *hallowelt* aus und auf der Schell eine 0 aus, wenn der Exit Code 0 bzw. eine 1, wenn der Exit Code 1 ist. Hierbei handetl es sich um ein besonderes Konstrukt, sogenannter List Constructs, die Sie in Skripten nutzen können. 
+Zugegeben, hier geschieht einiges an "Magic". Zusammengefasst wertet dieser Ausdruck den Exit Code des Programms *hallowelt* aus und auf der Kommandozeile eine 0 aus, wenn der Exit Code 0 bzw. eine 1, wenn der Exit Code 1 ist. Hierbei handelt es sich um ein besonderes Konstrukt, sogenannter List Constructs, die Sie in Skripten nutzen können. 
 
-Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entwender auf der Konsol oder in einem SKript. 
+Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entweder auf der Konsole oder in einem SKript. 
 
 ```bash
 > ./hallowelt
@@ -139,19 +139,19 @@ Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entw
 **Übungsaufgaben**
 1. Führend Sie das Programm *hallowelt* einmal ohne vorgestelltes *./* aus. Sie erhalten (vermutlich) einen Fehler. An was könnte das liegen. Lesen Sie [diesen Artikel](https://linuxundich.de/gnu-linux/uber-die-verwendung-von-in-shell-befehlen/) um das Gehemnis zu lüften.
 2. Lesen Sie [diesen Artikel](https://tldp.org/LDP/abs/html/list-cons.html) um die Funktionsweise von List Constructs 
-2. Schreiben Sie nun zwei C-Programme. Das erste Program gibt *Hallo* aus, das Zweite *Welt*. Das erste Programm liefert als Exit-Code nach erfolgreicher Ausgabe den Code 0. Schreiben Sie nun ein Bash-Script, das zunächst das erste Programm aufruft und danach Programm zwei aufruft. Allerdings nur, wenn des Exit Code des ersten Programms der Code 1 ist. Im anderen Fall gebene Sie einfach das Wort *Error* aus - und zwar ohne Ihre C-Programme abzuändern. 
+2. Schreiben Sie nun zwei C-Programme. Das erste Program gibt *Hallo* aus, das Zweite *Welt*. Das erste Programm liefert als Exit-Code nach erfolgreicher Ausgabe den Code 0. Schreiben Sie nun ein Bash-Script, das zunächst das erste Programm aufruft und danach Programm zwei aufruft. Allerdings nur, wenn des Exit Code des ersten Programms der Code 1 ist. Im anderen Fall geben Sie einfach das Wort *Error* aus - und zwar ohne Ihre C-Programme abzuändern. 
 
-Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und getartet und außerdem bereits einigies über die Linux Shell und C-Programmierung gelernt. Falls Sie nun die Frage quält, woher das Betriebssystem weiß, dass es beim Starten von *hallowelt* die *main*-Funktion aufrufen soll, werden Sie noch einigen Vorlesungseinheiten auf die Folter gespannt. Aber genau diesen Punkt werden werd noch im Laufe der Vorlesung kennen lernen.
+Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und gestartet und außerdem bereits einigens über die Linux Shell und C-Programmierung gelernt. Falls Sie nun die Frage quält, woher das Betriebssystem weiß, dass es beim Starten von *hallowelt* die *main*-Funktion aufrufen soll, werden Sie noch einigen Vorlesungseinheiten auf die Folter gespannt. Aber genau diesen Punkt werden werden noch im Laufe der Vorlesung kennen lernen.
 
 ## Funktionen
 
 ### Funktionen in a Nutshell
 
-Funktionen kennt vermutlich jeder noch aus Mathemathik. Bei Funktion der Art 
+Funktionen kennt vermutlich jeder noch aus Mathematik. Bei Funktion der Art 
 
 (1) *y = g(f(x))*
 
-könntnen die Funktionen *g(x)* und *f(x)* beispielsweise wie folgt aussehen: 
+könnten die Funktionen *g(x)* und *f(x)* beispielsweise wie folgt aussehen: 
 
 (2) *g : y = x +1* und *f : y = x \* 2* 
 
@@ -180,7 +180,7 @@ Und als Formel würden wir das so schreiben:
 
 (3) *y = main(g(f(x))*
 
-Die Funktionen in C (oder allgemein in Programmiersprachen) funktionieren demnach mehr oder weniger wie Funktionen in der Mathemtik.
+Die Funktionen in C (oder allgemein in Programmiersprachen) funktionieren demnach mehr oder weniger wie Funktionen in der Mathematik.
 
 ### Der Unterschied zwischen Funktionen, Methoden und Prozeduren
 
@@ -188,12 +188,12 @@ Die drei Begriffe Funktion, Prozedur und Methode werden oft unscharf bzw. als Sy
 
 * Eine Funktion hat einen Rückgabewert 
 * Eine Prozedur hat keinen Rückgabewert
-* Methoden werden Funktionen oder Prozeduren in der objektortientierten Programmierung genannt
+* Methoden werden Funktionen oder Prozeduren in der objektorientierten Programmierung genannt
 * In manchen Programmiersprachen wird dann  zwischen *Methoden ohne Rückgabewerten* und *Methoden mit Rückgabewerten* unterschieden
 
 Übungsaufgaben:
 1. Ändern Sie den Rückgabewert der *main*-Funktion des *hallowelt* Programms in *void* und prüfen Sie, ob sich das Programm noch ausführen lässt. Was erkennen Sie? 
-2. Lesen Sie den [Artikel von Bjarne Stroustrup](https://www.stroustrup.com/bs_faq2.html#void-main) bezüglich der Signatur der *main*-Funktion. Verinerlichen Sie dieses Wissen, Sie werden vermtutlich Ihre gesamte Karriere in Situationen kommen, in denen über die Signatru der *main*-Funktion in C diskutiert wird. 
+2. Lesen Sie den [Artikel von Bjarne Stroustrup](https://www.stroustrup.com/bs_faq2.html#void-main) bezüglich der Signatur der *main*-Funktion. Verinnerlichen Sie dieses Wissen, Sie werden vermutlich Ihre gesamte Karriere in Situationen kommen, in denen über die Signatur der *main*-Funktion in C diskutiert wird. 
 
 ### Funktionsprototyp
 
@@ -226,7 +226,7 @@ int main(int argc, char* argv[])
 **Übungsaufgaben:**
 
 1. Ändern Sie den Code aus dem vorherigen Beispiel so, dass die Implementierung der *main*-Funktion vor *g* und *f* steht. Kompilieren Sie das Programm. Was passiert?
-2. Ändern Sie nochmals das ursprüngliche Prgramm. Löschen Sie dieses Mal die Zeile `#include <stdio.h>`. Kompilieren Sie das Program. Was beobachten Sie? Wie könnte das mit der vorherigen Aufgabe zusammenhängen?
+2. Ändern Sie nochmals das ursprüngliche Programm. Löschen Sie dieses Mal die Zeile `#include <stdio.h>`. Kompilieren Sie das Program. Was beobachten Sie? Wie könnte das mit der vorherigen Aufgabe zusammenhängen?
 3. Nehmen Sie nun nochmals das Programm aus der ersten Übungsaufgabe und ändern Sie es entsprechend dem untenstehenden Beispiel ab. Kompilieren Sie das Programm. Was beobachten Sie?
 
 ```c
@@ -255,11 +255,11 @@ long g (long x)
 
 1. Suchen Sie im Ordner */usr/include* nach der Datei *stdio.h*. Öffnen Sie die Datei und suchen hier nach *printf*. Keine Sorge Sie müssen nicht verstehen, was hier steht. 
 
-*gcc* weiß, dass die Datei stdio.h im Pfad */usr/include* zu finden ist. Ebenso, wo die Standard C Bibliothek zu finden ist, in der die Funktionen letztendlich definiert sind. Diese liegen je nach System unter */usr/lib/libc*, */lib/libc*, */usr/lib/klibc* o.ä. Der Linker wird als zweiten Schritt ausgeführt, wenn Sie *gcc* aufrufen. Stark vereinfacht ausgedrückt kombiniert der Linker nach dem Kompilieren sämtliche Objektdateien (engl. object files) zu einem ausführbaren Programm und berechnet die Adressen von Code und Daten. Bisher waren alle Adressen sog. symbolische Adressen (engl. symbolic adresses). Da der Linker nun das "fertige" Programm kennt, weiß er auch an welcher Stelle später der ausführbare Programmcode als auch die Daten liegen und kann somit die numerischen Adressen (engl. numerical addresses) berechnen. Im Verlauf der Vorlesung greifen wir dies nochmal auf, wenn es darum geht, wie Prozesse ausgeführt werden und wie auf Daten im Speicher zugegriffen wird. 
+*gcc* weiß, dass die Datei stdio.h im Pfad */usr/include* zu finden ist. Ebenso, wo die Standard C Bibliothek zu finden ist, in der die Funktionen letztendlich definiert sind. Diese liegen je nach System unter */usr/lib/libc*, */lib/libc*, */usr/lib/klibc* o.ä. Der Linker wird als zweiten Schritt ausgeführt, wenn Sie *gcc* aufrufen. Stark vereinfacht ausgedrückt kombiniert der Linker nach dem Kompilieren sämtliche Objektdateien (engl. object files) zu einem ausführbaren Programm und berechnet die Adressen von Code und Daten. Bisher waren alle Adressen sog. symbolische Adressen (engl. symbolic addresses). Da der Linker nun das "fertige" Programm kennt, weiß er auch an welcher Stelle später der ausführbare Programmcode als auch die Daten liegen und kann somit die numerischen Adressen (engl. numerical addresses) berechnen. Im Verlauf der Vorlesung greifen wir dies nochmal auf, wenn es darum geht, wie Prozesse ausgeführt werden und wie auf Daten im Speicher zugegriffen wird. 
 
 ## Pointers 
 
-Dieser Kurs richtet sich insbesondere an unserer zweites Semester. In der Regel haben Sie noch nicht viel mit Pointern zu tun gehabt. Je nach dem wie Ihr späteres Berufsleben aussieht werden Sie es jedoch immer wieder mal, mehr oder weniger oft mit Pointer zu tun bekommen. JE näher Sie übrigens an Hardware arbeiten, desto stärker werden Sie Pointer verfolgen. Warum werden Sie im Verlauf der Vorlesung noch berstehen lernen.
+Dieser Kurs richtet sich insbesondere an unserer zweites Semester. In der Regel haben Sie noch nicht viel mit Pointer zu tun gehabt. Je nach dem wie Ihr späteres Berufsleben aussieht werden Sie es jedoch immer wieder mal, mehr oder weniger oft mit Pointer zu tun bekommen. Je näher Sie übrigens an Hardware arbeiten, desto stärker werden Sie Pointer verfolgen. Warum werden Sie im Verlauf der Vorlesung noch lernen.
 
 Aber was sind eigentlich Pointer? 
 
@@ -267,7 +267,7 @@ Pointer sind, wie die Übersetzung vermuten lässt, Zeiger. Wenn Sie sich jetzt 
 
 ### C und Variablen 
 
-Bevor wir uns mit Pointern beschäftigen, schauen wir uns etwas genauer an, was in C mit Variablen passiert. Dafür nehmen wir den folgenden Code. Dieser nutzt ausschließlich Sprachelemente, die wir bisher gelernt haben. Allerdings macht der Code auf den ersten Blick zugegebenerweise nichts sinvolles. 
+Bevor wir uns mit Pointern beschäftigen, schauen wir uns etwas genauer an, was in C mit Variablen passiert. Dafür nehmen wir den folgenden Code. Dieser nutzt ausschließlich Sprachelemente, die wir bisher gelernt haben. Allerdings macht der Code auf den ersten Blick zugegebenerweise nichts sinnvolles. 
 
 ```c
 #include <stdio.h>
@@ -313,8 +313,8 @@ Je nach eingesetztem Betriebssystem sehen Sie hier unterschiedliche Ausgaben:
 ...
 ```
 
-Auch wenn Ihnen das jetzt erst einmal komisch vorkommen solte, das Programm macht genau das, was es machen soll und verhält sich zwar indeterministisch aber erwartungkonform. 
-Sollten Sie nicht wissen, was indeterministisch. Indeterminismus ist übrigens eines der schlimmsten Dinge, die uns Entwicklern passieren können und machen uns besonders beim Debuggen das Leben schwer. Wenn sich ein so kleines Programm wie oben bereits so verhältt, was ist dann wohl erst bei Programmen mit abertausenden von Zeilen Code?
+Auch wenn Ihnen das jetzt erst einmal komisch vorkommen sollte, das Programm macht genau das, was es machen soll und verhält sich zwar nicht deterministisch aber erwartungkonform. 
+Indeterminismus ist übrigens eines der schlimmsten Dinge, die uns Entwicklern passieren können und machen uns besonders beim Debuggen das Leben schwer. Wenn sich ein so kleines Programm wie oben bereits so verhält, was ist dann wohl erst bei Programmen mit abertausenden von Zeilen Code?
 
 Aber schauen wir uns nun Schritt für Schritt den Code an, der Ihnen vermutlich nun Kopfzerbrechen bereitet: 
 
@@ -322,7 +322,7 @@ Der Beginn ist trivial: Die *main*-Methode ruft zunächst eine Methode *foo* auf
 
 In der *foo*-Methode wird zunächst mittels ```static int s;``` eine statische Variable *s* definiert.
 
-Statische Variablen gibt es in Ihrem Programm genau einmal. Obwohl die Variable hier in einer Funktion definiert wird, die ettliche Mal aufgerufen wird, wird nur ein einziges Mal für die Variable Speicher allokiert. Wenn in der Zeil der Ausgabe nun die Variable mittels ```s++``` um eins erhöht wird, wird dieser Wert immer an der gleiche Adresse  gelesen und geschrieben. Daher wird der Wert von Aufruf zu Aufruf größer. 
+Statische Variablen gibt es in Ihrem Programm genau einmal. Obwohl die Variable hier in einer Funktion definiert wird, die etliche Mal aufgerufen wird, wird nur ein einziges Mal für die Variable Speicher alloziert. Wenn in der Zeil der Ausgabe nun die Variable mittels ```s++``` um eins erhöht wird, wird dieser Wert immer an der gleiche Adresse  gelesen und geschrieben. Daher wird der Wert von Aufruf zu Aufruf größer. 
 
 Das die Variable bei 0 anfängt ist kein Zufall, ein Blick in den [C99 Standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf) liefert uns folgende Information:
 
@@ -332,21 +332,21 @@ Das die Variable bei 0 anfängt ist kein Zufall, ein Blick in den [C99 Standard]
 > — if it is an aggregate, every member is initialized (recursively) according to these rules;  
 > — if it is a union, the first named member is initialized (recursively) according to these rules.  
 
-Die Variable *s* wird als arrithmetischer Typ also mit 0 initialisiert. 
+Die Variable *s* wird als arithmetischer Typ also mit 0 initialisiert. 
 
 Anders sieht es nun aber bei der Variable x aus, die mittels ```int x;``` deklariert wird. Vermutlich haben Sie den ersten Satz überlesen, daher schauen wir uns den nochmals genauer an. 
 
 > **If an object that has automatic storage duration is not initialized explicitly, its value is indeterminate.**
 
-Die Variable *x* wird auf dem sogenannten Stack gespeichert. Den Unterschied zwischen Stack und Heap lernen Sie noch im Verlauf der Vorlesung kennen. Wichtig ist jedoch, dass der Speicher für die Variable automatisch auf dem Stack reserviert wird. Und hier liegt der Hase im Pfeffer: Die Variable wird an der nächstbesten Stelle in dem Speicherbereich angelegt, der in unsererm Stack frei ist. Was auch immer in dem Speicher steht, wird nun beim lesenden Zugriff auf die Variable ausgelesen. Diese Idee behalten Sie einmal im Kopf, denn hier nähern wir uns gewissermaßen bereits dem Konzept von Pointern. 
+Die Variable *x* wird auf dem sogenannten Stack gespeichert. Den Unterschied zwischen Stack und Heap lernen Sie noch im Verlauf der Vorlesung kennen. Wichtig ist jedoch, dass der Speicher für die Variable automatisch auf dem Stack reserviert wird. Und hier liegt der Hase im Pfeffer: Die Variable wird an der nächstbesten Stelle in dem Speicherbereich angelegt, der in unserem Stack frei ist. Was auch immer in dem Speicher steht, wird nun beim lesenden Zugriff auf die Variable ausgelesen. Diese Idee behalten Sie einmal im Kopf, denn hier nähern wir uns gewissermaßen bereits dem Konzept von Pointern. 
 
-Wenn Sie das Programm unter Windows laufen lassen, könnten Sie Glück haben und die Variable enthält immer den Wert 0. Dies liegt aber nicht an der C-Version unter Windows, sondern an der Tatsache, dass Windows ungenützte Speicherbereiche in seiner Freizeit löscht, indem Sie mit 0 überschrieben werden. Sie sollten aber keine Wette darauf abschließen, dass genau der Speicherbereich, der beim Aufruf der Funktion allokiert wird, bereits aufgeräumt wurde. 
+Wenn Sie das Programm unter Windows laufen lassen, könnten Sie Glück haben und die Variable enthält immer den Wert 0. Dies liegt aber nicht an der C-Version unter Windows, sondern an der Tatsache, dass Windows ungenützte Speicherbereiche in seiner Freizeit löscht, indem Sie mit 0 überschrieben werden. Sie sollten aber keine Wette darauf abschließen, dass genau der Speicherbereich, der beim Aufruf der Funktion alloziert wird, bereits aufgeräumt wurde. 
 
 ### Pointer definieren und verwenden
 
-Erinnern Sie sich noch an diese Sache mit dem Stack aus dem vorherigen Abschnitt? Versuchen wir einmal heruaszufinden wo im Speicher die Variablen *x* und *s* abgelegt sind. 
+Erinnern Sie sich noch an diese Sache mit dem Stack aus dem vorherigen Abschnitt? Versuchen wir einmal herauszufinden wo im Speicher die Variablen *x* und *s* abgelegt sind. 
 
-Und genau in diesem Moment benötigen wir Pointer. Die zeigen nämlich, und das haben Sie jetzt sicherlich schon vermutet, auf einen Speicherbereich. Pointer sind also nichts anderes als Variablen. Anders als arritmetische Variablen wie ein *Integer* enthält ein Pointer jedoch eine Adresse eines anderen Objektes.
+Und genau in diesem Moment benötigen wir Pointer. Die zeigen nämlich, und das haben Sie jetzt sicherlich schon vermutet, auf einen Speicherbereich. Pointer sind also nichts anderes als Variablen. Anders als arithmetische Variablen wie ein *Integer* enthält ein Pointer jedoch eine Adresse eines anderen Objektes.
 
 Definiert werden Pointer wie folgt:
 
@@ -354,7 +354,7 @@ Definiert werden Pointer wie folgt:
 Datentyp *Pointername 
 ```
 
-Möchten wir also Pointer für unserer beiden Variablen definieren sieht dies folgermßen aus: 
+Möchten wir also Pointer für unserer beiden Variablen definieren sieht dies folgendermaßen aus: 
 
 ```c
 int *s_ptr;
@@ -363,20 +363,20 @@ int *n_ptr;
 
 Das *int_* gibt dabei den Datentyp an, dessen Adresse wir wissen wollen, und nicht etwa den Datentyp des Pointers. Dieser richtet sich nach der Rechner-Architektur, also 8-, 16-, 32- oder 64-Bit.  Das Sternchen vor dem Variablennamen heißt übrigens *Reference-* oder *Indirection-Operator*. 
 
-Um nun an die Adresse einer Variable zu gelangen greift man auf die Variable mittes des *Address-Operators* zu:
+Um nun an die Adresse einer Variable zu gelangen greift man auf die Variable mittels des *Address-Operators* zu:
 
 ```c
 &Variablenname
 ```
 
-und weist dies einem Pointer zu. In unsererm Beispiel sieht das dann letztendlich so aus:
+und weist dies einem Pointer zu. In unserem Beispiel sieht das dann letztendlich so aus:
 
 ```c
 s_ptr = &s;
 n_ptr = &n;
 ```
 
-Alles zusammen können wiur unser Programm nun etwas umschreiben: 
+Alles zusammen können wir unser Programm nun etwas umschreiben: 
 
 ```c
 void foo()
@@ -418,24 +418,24 @@ local  n = 32767, address = 0x7fffc1085274
 ...
 ```
 
-Wie wir sehen, liegt die statische Variable *s* immer an der Adresse ```0x7f6c15b4e014```, woggen *x* bei jedem Aufruf an einer neuen Adresse liegt. Das macht auch Sinn, da - obwohl die Variable für uns immer den gleichen Namen hat - diese immer nur in der jeweiligen Funktion gültigkeit hat. Soblad wir aus einer aufgerufenen Funktion wieder zurückkehren würden, würden wir auch wieder auf die voirher genutzt Variable zugreifen können.  
+Wie wir sehen, liegt die statische Variable *s* immer an der Adresse ```0x7f6c15b4e014```, woggen *x* bei jedem Aufruf an einer neuen Adresse liegt. Das macht auch Sinn, da - obwohl die Variable für uns immer den gleichen Namen hat - diese immer nur in der jeweiligen Funktion gültigkeit hat. Sobald wir aus einer aufgerufenen Funktion wieder zurückkehren würden, würden wir auch wieder auf die vorher genutzt Variable zugreifen können.  
 
 
 ### Exkurs: Auf der Suche nach den verlorenen 16 Bit.
 
-Die Adressen werdne hier als Headezimal-Werte ausgegeben. 
+Die Adressen werden hier als Hexadezimal-Werte ausgegeben. 
 
-Nehmen wir die Adresse, an der sich die statische Variable *s* befindet, ```0x7f6c15b4e014``` und rechnen diese um in Bit kommen wir auf den Wert ```0111 1111 0110 1100 0001 0101 1011 0100 1110 0000 0001 0100```. Wer nun zählt, findet hier *nur* 48 Bit. Das sind weder 32 noch 64, wie man vermuten möchte.  Im vorliegenden Fall wurde das tatsächlich auf einem 64-Bit Windows System ausgeführt. Allerdings werden bei gängigen 64-Bit CPUs nur 48 der theoretischen 64 Bit zur Addressierung eines Addressraums eines Prozesses genutzt. Konkret bedeutet dies, dass der Adressraum eines Prozesses kleiner ist, als er sein könnte. Was das genau bedeutet lernen Sie im Verlauf der Vorlesung noch genauer kennen, wenn wir uns mit Prozessen und Adressräumen befassen.
+Nehmen wir die Adresse, an der sich die statische Variable *s* befindet, ```0x7f6c15b4e014``` und rechnen diese um in Bit kommen wir auf den Wert ```0111 1111 0110 1100 0001 0101 1011 0100 1110 0000 0001 0100```. Wer nun zählt, findet hier *nur* 48 Bit. Das sind weder 32 noch 64, wie man vermuten möchte.  Im vorliegenden Fall wurde das tatsächlich auf einem 64-Bit Windows System ausgeführt. Allerdings werden bei gängigen 64-Bit CPUs nur 48 der theoretischen 64 Bit zur Adressierung eines Adressraums eines Prozesses genutzt. Konkret bedeutet dies, dass der Adressraum eines Prozesses kleiner ist, als er sein könnte. Was das genau bedeutet lernen Sie im Verlauf der Vorlesung noch genauer kennen, wenn wir uns mit Prozessen und Adressräumen befassen.
 
 ### One More Thing 
 
-Jetzt da geklärt ist, wo die vermissten Bits sind, und wie wir an die Adresse kommen, stellt sich Ihnen vielleicht noch die Frage, was passiert eigentlich, wenn der Reference-Operator auf einen Pointer angewandt wird! Genau das wollten Sie doch jetyt fragen, oder etwa nicht?
+Jetzt da geklärt ist, wo die vermissten Bits sind, und wie wir an die Adresse kommen, stellt sich Ihnen vielleicht noch die Frage, was passiert eigentlich, wenn der Reference-Operator auf einen Pointer angewandt wird! Genau das wollten Sie doch jetzt fragen, oder etwa nicht?
 
 ```c#
 *x_ptr = x;
 ```
 
-Sofern *x_ptr* ein Pointer ist, liefert `*x_ptr`* mit dem Inhalt an der Adresse. Somit lässt ich mittels ```px = x;``` der Inhalt der Variable *X* an die Adresse schreiben, die in x_ptr gespcihert ist. Eingeitnlich einfac, oder?
+Sofern *x_ptr* ein Pointer ist, liefert `*x_ptr`* mit dem Inhalt an der Adresse. Somit lässt ich mittels ```px = x;``` der Inhalt der Variable *X* an die Adresse schreiben, die in x_ptr gespeichert ist. Eigentlich einfach, oder?
 
 Zum Nachvollziehen, das folgende Beispiel, in dem wir einige Variableninhalten kopieren. 
 
@@ -470,7 +470,7 @@ int main()
 
 **Übungsaufgaben:**
 
-1. Kompilieren und führen Sie das obige Programm aus. Spielen Sie etwas mit den Zuweisungen zwischen Variablen und Pointern herum, um ein Gefühl dafür zu entwickeln, wie sich das Programm verhält. 
+1. Kompilieren und führen Sie das obige Programm aus. Spielen Sie etwas mit den Zuweisungen zwischen Variablen und Pointer herum, um ein Gefühl dafür zu entwickeln, wie sich das Programm verhält. 
 
 
 ```bash
@@ -483,7 +483,7 @@ int main()
 ```
 ### C isn't hard
 
-Früher oder später werden Sie über komplexere Ausdrücke mit Pointern stolpern. Und vermutlich auch übver folgendes Meme:
+Früher oder später werden Sie über komplexere Ausdrücke mit Pointer stolpern. Und vermutlich auch über folgendes Meme:
 
 > *void (*(*f[])())()* defines *f* as an 
 > array of unspecified size, of pointers to
@@ -496,7 +496,7 @@ Für die Beispiel, Aufgaben und Übungen in der Vorlesung werden Ihnen die obige
 
 ## Datenstrukturen 
 
-Im Verlauf der Vorlesung werden wir sehen, wie man ein laufendes Programm im Rechner (wir nennen das später Prozesse) mit Sack und Pack pausieren, auf die Fetsplatte schreiben und später wieder laden und starten kann. Verrückte Sache, wenn man sich überlegt ein Programm irgendwo in seinem Ablauf anzuhalten und so auf die Festplatte zu schreiben, dass man es später wieder laden kann und es exakt an der Stelle weiterläuft, an der man es angehalten hat, ohne dass das Programm davon etwas merkt. Um das zu erreichne benötigen wir einige Informationen. Exemplarisch definieren wir einige Prozessbestandteile im folgenden Code-Beispiel:
+Im Verlauf der Vorlesung werden wir sehen, wie man ein laufendes Programm im Rechner (wir nennen das später Prozesse) mit Sack und Pack pausieren, auf die Festplatte schreiben und später wieder laden und starten kann. Verrückte Sache, wenn man sich überlegt ein Programm irgendwo in seinem Ablauf anzuhalten und so auf die Festplatte zu schreiben, dass man es später wieder laden kann und es exakt an der Stelle weiterläuft, an der man es angehalten hat, ohne dass das Programm davon etwas merkt. Um das zu erreichen, benötigen wir einige Informationen. Exemplarisch definieren wir einige Prozessbestandteile im folgenden Code-Beispiel:
 
 ```c
 char name[16];
@@ -505,7 +505,7 @@ int inode;
 ...
 ```
 
-Wollen wir zwei solche Prozesse verwalten könntne nun so etwas schreiben:
+Wollen wir zwei solche Prozesse verwalten, könnten wir nun so etwas schreiben:
 
 ```c
 char name1[16];
@@ -518,11 +518,11 @@ int inode2;
 ...
 ```
 
-Das würde zwar gehen, aber bei 1024 Prozessen werden Sie jetzt aber keinen Spass mehr haben.
+Das würde zwar gehen, aber bei 1024 Prozessen werden Sie jetzt aber keinen Spaß mehr haben.
 
 ### Arrays
 
-Sobald wir also ein multi-tasking fähigens Betriebssystem (weir lernen später was das genau ist) nutzen benötigen wir noch viel mehr von diesen Daten. Eine Möglichkeit wäre also, wir legen uns *Arrays* von jedem Element an. Dabei gehören jeweils alle Atttribute mit dem gleichen Index zusammen. Wollen wir also 1024 Prozesse verwalte, sähe das ungefär so aus: 
+Sobald wir also ein multi-tasking-fähiges Betriebssystem (wir lernen später noch was das genau ist) nutzen benötigen wir noch viel mehr von diesen Daten. Eine Möglichkeit wäre also, wir legen uns *Arrays* von jedem Element an. Dabei gehören jeweils alle Attribute mit dem gleichen Index zusammen. Wollen wir also 1024 Prozesse verwalte, sähe das ungefähr so aus: 
 
 ```c
 char name[16][1024];
@@ -530,7 +530,7 @@ int procstate[1024];
 int inode[1024];
 ```
 
-Bevor wir weitermachen schauen wir uns aber hier nochmals diese Sache mit den eckigen Klammern an. Solche sog. *Arrays* sollten Ihnen hoffentlich aus den Programmier-Vorlesungenn noch bekannt sein. Falls nicht, nehme wir einmal das Beispiel von oben. Möchten Sie mehrere Prozessstatus - ob Sie es glauben oder nicht, die Mehrzahl von Status ist Status! Nicht Stati, nicht Statuse oder irgendetwas anderes. Merken Sie sich das hier und jetzt. Dann haben Sie etwas für's Leben gelernt, auch wenn die Sache mit dem Programmieren nichts wird. Also wo waren wir? Mehrere Status. Also der Code Cazu: 
+Bevor wir weitermachen schauen wir uns aber hier nochmals diese Sache mit den eckigen Klammern an. Solche sog. *Arrays* sollten Ihnen hoffentlich aus den Programmiervorlesungen noch bekannt sein. Falls nicht, nehme wir einmal das Beispiel von oben. Möchten Sie mehrere Prozessstatus - ob Sie es glauben oder nicht, die Mehrzahl von Status ist Status! Nicht »Stati«, nicht »Statuse« oder irgendetwas anderes. Merken Sie sich das hier und jetzt. Dann haben Sie etwas für's Leben gelernt, auch wenn die Sache mit dem Programmieren nichts wird. Also wo waren wir? Mehrere Status. Also der Code dazu: 
 
 ```c
 int procstate1;
@@ -540,7 +540,7 @@ int procstate3;
 int procstate1024:
 ```
 
-Sie merken schon, so macht Programmieren kein Spass. Vermutlich nur aus diesem Grund hat man in C (und eigentlich in allen anderen Programmiersprachen) Arrays eingeführt, das sind mehrer, aneinanderhängende Variablen des gleichen Typs, die sich über Ihren Index adressieren lassen. Der INdex steht in der eckicken Klammer und gibt die Stelle im Array an. Normal fangen wir dabei *immer* bei bei nur an zu Zählen. Außer in Visual Basic. 
+Sie merken schon, so macht Programmieren kein Spaß. Vermutlich nur aus diesem Grund hat man in C (und eigentlich in allen anderen Programmiersprachen) Arrays eingeführt, das sind mehrere, aneinanderhängende Variablen des gleichen Typs, die sich über Ihren Index adressieren lassen. Der INdex steht in der eckigken Klammer und gibt die Stelle im Array an. Normal fangen wir dabei *immer* bei bei nur an zu Zählen. Außer in Visual Basic. 
 
 ```c
 int procstate[1024];
@@ -555,9 +555,9 @@ printf("proc 2 state = %d\n", procstate[1]);
 
 **Übungsaufgaben:**
 1. Erweitern Sie das Programm, fügen Sie weiteren Feldern im Array Werte hinzu und lassen Sie sich diese ausgeben. 
-2. Lassen Sie sich alle Werte im Array ausgeben, was erwarten Sie? WErfen Sie nochmals einen Blick in den Anfang des Abschnitts *C und Variablen*. Bei Arrays handelt es sich um sog. *Aggregates*.
+2. Lassen Sie sich alle Werte im Array ausgeben, was erwarten Sie? Werfen Sie nochmals einen Blick in den Anfang des Abschnitts *C und Variablen*. Bei Arrays handelt es sich um sog. *Aggregates*.
 
-Auch wenn Sie nun Arrays im Griff haben, richtig gut lassen sich damit viele Daten nicht sonderlich grut strukturieren.
+Auch wenn Sie nun Arrays im Griff haben, richtig gut lassen sich damit viele Daten nicht sonderlich gut strukturieren.
 
 *Structs*
 
@@ -572,10 +572,11 @@ struct proc
 };
 ```
 
-Im Prinzip handelt es sich dabei um einen zusammengesetzen Datentyp. Wenn Sie im vergangenen Semester breits Java gelernt haben - eine Klasse in Java ist im Grunde das gleiche. Naja, nicht ganz das gleiche, und eigentlich noch nichtmal annähernd das Gleiche aber die Grundidee ist gleich. Sie fassen mehrere Felder zu einem "Ding" zusammen.
+Im Prinzip handelt es sich dabei um einen zusammengesetzen Datentyp. Wenn Sie im vergangenen Semester bereits Java gelernt haben - eine Klasse in Java ist im Grunde das gleiche. Naja, nicht ganz das gleiche, und eigentlich noch nichtmal annähernd das Gleiche aber die Grundidee ist gleich. Sie fassen mehrere Felder zu einem "Ding" zusammen.
 
-Wird die Structure wie oben definiert, wird noch kein Speicher allokiert. D.h. Sie sagen dem Kompiler nur, dass es so eine Struktur geben solle. Sie können nun explizit via `proc foo;´  den Speicher für dies Struktur allokieren (Achtung! Was auch immerdort im Speicher steht, steht jetzt in dieser Struktur!) oder dies schon bei der Deklaration erledigen. 
+Wird die Structure wie oben definiert, wird noch kein Speicher alloziert. D.h. Sie sagen dem Kompiler nur, dass es so eine Struktur geben solle. Sie können nun explizit via `proc foo;´  den Speicher für dies Struktur allokieren (Achtung! Was auch immerdort im Speicher steht, steht jetzt in dieser Struktur!) oder dies schon bei der Deklaration erledigen. 
 
+```c
 int main()
 {
     struct proc {
@@ -590,8 +591,9 @@ int main()
     printf("proc 1 state = %d\n", proc[0].procstate);
     printf("proc 2 state = %d\n", proc[1].procstate);
 }
+```
 
-Auf den Inhalt der Felder greifen Sie mit einem Punkt (engl. dot operator) `.` zu, wenn Sie nicht die Struct selbst kennen, sondern nur einen Poonter darauf kennen, erhalten Sie über einen Pfeil`->` (engl. arrow operator) darauf zugriff - letzertes wird manchmal auf "member by pointer" genannt. 
+Auf den Inhalt der Felder greifen Sie mit einem Punkt (engl. dot operator) `.` zu, wenn Sie nicht die Struct selbst kennen, sondern nur einen Poonter darauf kennen, erhalten Sie über einen Pfeil`->` (engl. arrow operator) darauf Zugriff - letzertes wird manchmal auf "member by pointer" genannt. 
 
 Das folgende Beispiel verdeutlicht die Funktionsweise.
 
