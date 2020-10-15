@@ -1,9 +1,9 @@
 # C Crashkurs
 
 ---
-Last modified: 2020/09/27 01:50:57
+Last modified: 2020/10/15 23:10:32
   Created: 2020/09/16 21:21:48  
-Version: 0.0.3-beta  
+Version: 0.0.4  
 Author: [aheil](https://www.github.com/aheil)  
 
 ---
@@ -35,11 +35,11 @@ Inhalt
 
 **Student:** *Aber warum nutzen wir in der Vorlesung überhaupt C? Warum soll ich jetzt plötzlich C lernen? Geht das nicht ganz ohne Programmieren? Andere Vorlesungen zum Thema Betriebssystem progammieren doch auch kein C!*
 
-**Professor:** *Um die grundlegenden Konzepte, insbesondere im Umgang mit Speicher zu verdeutlichen, greifen wir nunmal in der Vorlesung Betriebssysem auf die Programmiersprache C zurück. Im Laufe der Verantaltung werden darüber hinaus einige Übungen mit Hardware druchgeführt. Auch hier ist es aus pragmatischen Gründen naheliegend mit der Hardware mit C zu sprechen. In anderen Vorlesungen wird auch kein Code auf einem ESP32 deployed...Außerden, Sie studieren Software Engineering, da sollte es Ihnen halbwegs Spaß machen etwas zu programmieren...*
+**Professor:** *Um die grundlegenden Konzepte, insbesondere im Umgang mit Speicher zu verdeutlichen, greifen wir nunmal in der Vorlesung Betriebssysteme auf die Programmiersprache C zurück. Im Laufe der Veranstaltung werden darüber hinaus einige Übungen mit Hardware druchgeführt. Auch hier ist es aus pragmatischen Gründen naheliegend mit der Hardware mit C zu sprechen. In anderen Vorlesungen wird ja auch kein Code auf einem ESP32 deployed...Außerdem, Sie studieren Software Engineering, da sollte es Ihnen halbwegs Spaß machen etwas zu programmieren...*
 
 **Student:** *OK, aber warum soll ich das jetzt lernen? Ich werde das später in meinem Job doch eh nicht mehr brauchen..."*
 
-**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen, C-Programme lesen zu können und einfache C-Progamme selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sie sich weiteres Wissen im C-Umfeld eigenständig aneignen, sich in eigene Bibliotheken einarbeiten oder auch beurteilen können, ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. Soetwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.*
+**Professor:** *Ziel dieses Crashkurses ist es Sie in die Lage zu versetzen, C-Programme lesen zu können und einfache C-Progamme selbst schreiben zu können. Sie werden in Ihrer Laufbahn immer wieder über C-Code stolpern. Und leider ist der nicht immer ganz so einfach zu lesen. Außerdem möchte ich Ihnen hier die Grundlagen an die Hand geben, dass sie sich weiteres Wissen im C-Umfeld eigenständig aneignen, sich in eigene Bibliotheken einarbeiten oder auch beurteilen können, ob es in Ihrem ersten echten Projekt nach dem Abschluss geschickter ist C oder Rust zu nutzen. Wir nennen so etwas eine Kompetenz, die Sie im Studium lernen. So etwas ist besser als nur das Auswendiglernen der Schlüsselworte von C.*
 
 **Student:** *OK, also wo fange ich da am besten an?*
 
@@ -490,7 +490,7 @@ Früher oder später werden Sie über komplexere Ausdrücke mit Pointern stolper
 > functions that return pointers to functions that
 > return *void*.
 
-Verzweifeln Sie nicht, und - viel wichtiger - ignorieren sie den Ausdruck nicht. Es gibt zahlreiche Anleitungen wie sie [komplexe Popinter-Anweisungen entschlüsseln](https://www.codementor.io/@dankhan/how-to-easily-decipher-complex-pointer-declarations-cpp-so24b66me). Üben Sie strukturiert vorzugehen und versuchen Sie den Ausdruck Stück für Stück zu verstehen.
+Verzweifeln Sie nicht, und - viel wichtiger - ignorieren sie den Ausdruck nicht. Es gibt zahlreiche Anleitungen wie sie [komplexe Pointer-Anweisungen entschlüsseln](https://www.codementor.io/@dankhan/how-to-easily-decipher-complex-pointer-declarations-cpp-so24b66me). Üben Sie strukturiert vorzugehen und versuchen Sie den Ausdruck Stück für Stück zu verstehen.
 
 Für die Beispiel, Aufgaben und Übungen in der Vorlesung werden Ihnen die obigen Anweisungen ausreichen. Der Rest kommt durch Übung. 
 
