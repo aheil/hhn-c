@@ -1,7 +1,7 @@
 # C Crashkurs
 
 ---
-Last modified: 2020/10/15 23:41:58
+Last modified: 2020/10/15 23:43:40
   Created: 2020/09/16 21:21:48  
 Version: 0.0.4  
 Author: [aheil](https://www.github.com/aheil)  
@@ -704,3 +704,5 @@ Die Verwirrung tritt eigentlich nur auf, wenn Sie versuchen mehrer Variablen in 
 
 ![https://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+
+Code is licensed under MIT license.
