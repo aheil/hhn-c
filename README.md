@@ -1,7 +1,7 @@
 # C Crashkurs
 
 ---
-Last modified: 2021/05/18 01:11:28
+Last modified: 2021/05/18 01:21:24
   Created: 2020/09/16 21:21:48  
 Version: 1.0.0  
 Author: [aheil](https://www.github.com/aheil)  
@@ -700,7 +700,7 @@ Die Verwirrung tritt eigentlich nur auf, wenn Sie versuchen mehrere Variablen in
 
 Zuletzt stellt sich die Frage, woher der Compiler weiß, wo nach den einzelnen Dateien zu suchen ist.  
 
-Am [Beispiel von GCC]([GCC Dokumentation](http://gcc.gnu.org/onlinedocs/cpp/Search-Path.html)) werden alle Dateien, welche mittels `#include "datei"` referenziert werden zunächst im aktuellen Verzeichnis gesucht. Danach prüft der Compiler, oder besser, der Präprozessor, eine Liste von Standardverzeichnissen, die standardmäßig hinterlegt sind.
+Am [Beispiel von GCC](http://gcc.gnu.org/onlinedocs/cpp/Search-Path.html) werden alle Dateien, welche mittels `#include "datei"` referenziert werden zunächst im aktuellen Verzeichnis gesucht. Danach prüft der Compiler, oder besser, der Präprozessor, eine Liste von Standardverzeichnissen, die standardmäßig hinterlegt sind.
 
 Bei Dateien, die mittels Klammern, z.B. `#include <datei>`  angegeben werden, sucht der Compiler ausschließlich in den Standardverzeichnissen.  
 
