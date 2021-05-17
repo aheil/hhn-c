@@ -1,9 +1,9 @@
 # C Crashkurs
 
 ---
-Last modified: 2020/10/15 23:43:40
+Last modified: 2021/05/18 01:11:28
   Created: 2020/09/16 21:21:48  
-Version: 0.0.4  
+Version: 1.0.0  
 Author: [aheil](https://www.github.com/aheil)  
 
 ---
@@ -21,7 +21,7 @@ Inhalt
 
 ## Ein Dialog über C
 
-**Professor:** *Systemnahe Programmierung findet oft mittels der Programmiersprach C statt. Ursprung hat C in der Entwicklung des UNIX Kernels, der zuvor direkt mit Assembler entwickelt wurde. Gegen Ende des 20 Jhd. wurden zahlreiche Programme in C entwickelt. Neben UNIX entwickelte Oracle seine Datenbanken in C und auch Windows 1.0 wurde in C entwickelt.* 
+**Professor:** *Systemnahe Programmierung findet oft mittels der Programmiersprache C statt. Ursprung hat C in der Entwicklung des UNIX Kernels, der zuvor direkt mit Assembler entwickelt wurde. Gegen Ende des 20 Jhd. wurden zahlreiche Programme in C entwickelt. Neben UNIX entwickelte Oracle seine Datenbanken in C und auch Windows 1.0 wurde in C entwickelt.* 
 
 *Heute finden wir C noch immer in den Kernel der Betriebssysteme Mac OS, Linux und Windows, in den mobilen Betriebssystemen Android, iOS und Windows Phone. Aber auch  Anwendungen wie MySQL oder dem Microsoft SQL Server sind in C (und C++) entwickelt.*
 
@@ -69,7 +69,7 @@ Testen ob `gcc` installiert ist.
 C Programme lassen sich recht einfach erstellen:
 
 1. C-Code schreiben 
-2. Compilieren und Linken 
+2. Kompilieren und Linken 
 3. Programm ausführen
 
 ### Übung 1: Hallo Welt 
@@ -92,7 +92,7 @@ int main()
  1. Was passiert, wenn Sie die Zeile `#include <stdio.h>` aus dem Programm entfernen und neu kompilieren. Was bedeutet dies?
  2. Warum ist der Rückgabewert der *main*-Funktion *int*? An wen übergibt diese Funktion den Wert und wo wird dieser zurück gegeben? 
 
-#### 2. Compilieren und Linken
+#### 2. Kompilieren und Linken
 
 Führen Sie folgenden Befehl auf der Kommandozeile/Shell aus:
 
@@ -127,7 +127,7 @@ Sie sollten nun folgendes auf Ihrem Bildschirm sehen:
 
 Zugegeben, hier geschieht einiges an "Magic". Zusammengefasst wertet dieser Ausdruck den Exit Code des Programms *hallowelt* aus und auf der Kommandozeile eine 0 aus, wenn der Exit Code 0 bzw. eine 1, wenn der Exit Code 1 ist. Hierbei handelt es sich um ein besonderes Konstrukt, sogenannter List Constructs, die Sie in Skripten nutzen können. 
 
-Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entweder auf der Konsole oder in einem SKript. 
+Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entweder auf der Konsole oder in einem Skript. 
 
 ```bash
 > ./hallowelt
@@ -137,11 +137,11 @@ Wenn Sie einfach nur den vorherigen Exit Codes sehen wollen nutzen Sie `$?` entw
 ```
 
 **Übungsaufgaben**
-1. Führend Sie das Programm *hallowelt* einmal ohne vorgestelltes *./* aus. Sie erhalten (vermutlich) einen Fehler. An was könnte das liegen. Lesen Sie [diesen Artikel](https://linuxundich.de/gnu-linux/uber-die-verwendung-von-in-shell-befehlen/) um das Gehemnis zu lüften.
+1. Führend Sie das Programm *hallowelt* einmal ohne vorgestelltes *./* aus. Sie erhalten (vermutlich) einen Fehler. An was könnte das liegen. Lesen Sie [diesen Artikel](https://linuxundich.de/gnu-linux/uber-die-verwendung-von-in-shell-befehlen/) um das Geheimnis zu lüften.
 2. Lesen Sie [diesen Artikel](https://tldp.org/LDP/abs/html/list-cons.html) um die Funktionsweise von List Constructs 
 2. Schreiben Sie nun zwei C-Programme. Das erste Program gibt *Hallo* aus, das Zweite *Welt*. Das erste Programm liefert als Exit-Code nach erfolgreicher Ausgabe den Code 0. Schreiben Sie nun ein Bash-Script, das zunächst das erste Programm aufruft und danach Programm zwei aufruft. Allerdings nur, wenn des Exit Code des ersten Programms der Code 1 ist. Im anderen Fall geben Sie einfach das Wort *Error* aus - und zwar ohne Ihre C-Programme abzuändern. 
 
-Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und gestartet und außerdem bereits einigens über die Linux Shell und C-Programmierung gelernt. Falls Sie nun die Frage quält, woher das Betriebssystem weiß, dass es beim Starten von *hallowelt* die *main*-Funktion aufrufen soll, werden Sie noch einigen Vorlesungseinheiten auf die Folter gespannt. Aber genau diesen Punkt werden werden noch im Laufe der Vorlesung kennen lernen.
+Sie haben nun Ihr erstes C-Programm geschrieben, kompiliert und gestartet und außerdem bereits Einiges über die Linux Shell und C-Programmierung gelernt. Falls Sie nun die Frage quält, woher das Betriebssystem weiß, dass es beim Starten von *hallowelt* die *main*-Funktion aufrufen soll, werden Sie noch einigen Vorlesungseinheiten auf die Folter gespannt. Aber genau diesen Punkt werden werden noch im Laufe der Vorlesung kennen lernen.
 
 ## Funktionen
 
@@ -267,7 +267,7 @@ Pointer sind, wie die Übersetzung vermuten lässt, Zeiger. Wenn Sie sich jetzt 
 
 ### C und Variablen 
 
-Bevor wir uns mit Pointern beschäftigen, schauen wir uns etwas genauer an, was in C mit Variablen passiert. Dafür nehmen wir den folgenden Code. Dieser nutzt ausschließlich Sprachelemente, die wir bisher gelernt haben. Allerdings macht der Code auf den ersten Blick zugegebenerweise nichts sinnvolles. 
+Bevor wir uns mit Pointern beschäftigen, schauen wir uns etwas genauer an, was in C mit Variablen passiert. Dafür nehmen wir den folgenden Code. Dieser nutzt ausschließlich Sprachelemente, die wir bisher gelernt haben. Allerdings macht der Code auf den ersten Blick anscheinend nichts sinnvolles. 
 
 ```c
 #include <stdio.h>
@@ -313,7 +313,7 @@ Je nach eingesetztem Betriebssystem sehen Sie hier unterschiedliche Ausgaben:
 ...
 ```
 
-Auch wenn Ihnen das jetzt erst einmal komisch vorkommen sollte, das Programm macht genau das, was es machen soll und verhält sich zwar nicht deterministisch aber erwartungkonform. 
+Auch wenn Ihnen das jetzt erst einmal komisch vorkommen sollte, das Programm macht genau das, was es machen soll und verhält sich zwar nicht deterministisch aber erwartungskonform. 
 Indeterminismus ist übrigens eines der schlimmsten Dinge, die uns Entwicklern passieren können und machen uns besonders beim Debuggen das Leben schwer. Wenn sich ein so kleines Programm wie oben bereits so verhält, was ist dann wohl erst bei Programmen mit abertausenden von Zeilen Code?
 
 Aber schauen wir uns nun Schritt für Schritt den Code an, der Ihnen vermutlich nun Kopfzerbrechen bereitet: 
@@ -418,7 +418,7 @@ local  n = 32767, address = 0x7fffc1085274
 ...
 ```
 
-Wie wir sehen, liegt die statische Variable *s* immer an der Adresse ```0x7f6c15b4e014```, woggen *x* bei jedem Aufruf an einer neuen Adresse liegt. Das macht auch Sinn, da - obwohl die Variable für uns immer den gleichen Namen hat - diese immer nur in der jeweiligen Funktion gültigkeit hat. Sobald wir aus einer aufgerufenen Funktion wieder zurückkehren würden, würden wir auch wieder auf die vorher genutzt Variable zugreifen können.  
+Wie wir sehen, liegt die statische Variable *s* immer an der Adresse ```0x7f6c15b4e014```, wogen *x* bei jedem Aufruf an einer neuen Adresse liegt. Das macht auch Sinn, da - obwohl die Variable für uns immer den gleichen Namen hat - diese immer nur in der jeweiligen Funktion Gültigkeit hat. Sobald wir aus einer aufgerufenen Funktion wieder zurückkehren würden, würden wir auch wieder auf die vorher genutzt Variable zugreifen können.  
 
 
 ### Exkurs: Auf der Suche nach den verlorenen 16 Bit.
@@ -530,7 +530,7 @@ int procstate[1024];
 int inode[1024];
 ```
 
-Bevor wir weitermachen schauen wir uns aber hier nochmals diese Sache mit den eckigen Klammern an. Solche sog. *Arrays* sollten Ihnen hoffentlich aus den Programmiervorlesungen noch bekannt sein. Falls nicht, nehme wir einmal das Beispiel von oben. Möchten Sie mehrere Prozessstatus - ob Sie es glauben oder nicht, die Mehrzahl von Status ist Status! Nicht »Stati«, nicht »Statuse« oder irgendetwas anderes. Merken Sie sich das hier und jetzt. Dann haben Sie etwas für's Leben gelernt, auch wenn die Sache mit dem Programmieren nichts wird. Also wo waren wir? Mehrere Status. Also der Code dazu: 
+Bevor wir weitermachen schauen wir uns aber hier nochmals diese Sache mit den eckigen Klammern an. Solche sog. *Arrays* sollten Ihnen hoffentlich aus den Programmiervorlesungen noch bekannt sein. Falls nicht, nehme wir einmal das Beispiel von oben. Möchten Sie mehrere Prozessstatus - ob Sie es glauben oder nicht, die Mehrzahl von Status ist Status! Nicht »Stati«, nicht »Statuse« oder irgendetwas anderes. Merken Sie sich das hier und jetzt. Dann haben Sie etwas fürs Leben gelernt, auch wenn die Sache mit dem Programmieren nichts wird. Also wo waren wir? Mehrere Status. Also der Code dazu: 
 
 ```c
 int procstate1;
@@ -540,7 +540,7 @@ int procstate3;
 int procstate1024:
 ```
 
-Sie merken schon, so macht Programmieren kein Spaß. Vermutlich nur aus diesem Grund hat man in C (und eigentlich in allen anderen Programmiersprachen) Arrays eingeführt, das sind mehrere, aneinanderhängende Variablen des gleichen Typs, die sich über Ihren Index adressieren lassen. Der INdex steht in der eckigken Klammer und gibt die Stelle im Array an. Normal fangen wir dabei *immer* bei bei nur an zu Zählen. Außer in Visual Basic. 
+Sie merken schon, so macht Programmieren kein Spaß. Vermutlich nur aus diesem Grund hat man in C (und eigentlich in allen anderen Programmiersprachen) Arrays eingeführt, das sind mehrere, aneinanderhängende Variablen des gleichen Typs, die sich über Ihren Index adressieren lassen. Der Index steht in der eckigen Klammer und gibt die Stelle im Array an. Normal fangen wir dabei *immer* bei bei nur an zu Zählen. Außer in Visual Basic. 
 
 ```c
 int procstate[1024];
@@ -561,7 +561,7 @@ Auch wenn Sie nun Arrays im Griff haben, richtig gut lassen sich damit viele Dat
 
 *Structs*
 
-Zum Glück hat C etwas, mit dem wir Variablen zusammenfassen können. Mit dem Schlüsselwort `strcut` lassen sich ebensolche Strucutres (oder auf Deutsch ein Verbund) erstellen.
+Zum Glück hat C etwas, mit dem wir Variablen zusammenfassen können. Mit dem Schlüsselwort `strcut` lassen sich ebensolche Structures (oder auf Deutsch ein Verbund) erstellen.
 
 ```c
 struct proc
@@ -572,9 +572,9 @@ struct proc
 };
 ```
 
-Im Prinzip handelt es sich dabei um einen zusammengesetzen Datentyp. Wenn Sie im vergangenen Semester bereits Java gelernt haben - eine Klasse in Java ist im Grunde das gleiche. Naja, nicht ganz das gleiche, und eigentlich noch nichtmal annähernd das Gleiche aber die Grundidee ist gleich. Sie fassen mehrere Felder zu einem "Ding" zusammen.
+Im Prinzip handelt es sich dabei um einen zusammengesetzten Datentyp. Wenn Sie im vergangenen Semester bereits Java gelernt haben - eine Klasse in Java ist im Grunde das gleiche. Naja, nicht ganz das gleiche, und eigentlich noch nicht einmal annähernd das Gleiche aber die Grundidee ist gleich. Sie fassen mehrere Felder zu einem "Ding" zusammen.
 
-Wird die Structure wie oben definiert, wird noch kein Speicher alloziert. D.h. Sie sagen dem Kompiler nur, dass es so eine Struktur geben solle. Sie können nun explizit via `proc foo;´  den Speicher für dies Struktur allokieren (Achtung! Was auch immerdort im Speicher steht, steht jetzt in dieser Struktur!) oder dies schon bei der Deklaration erledigen. 
+Wird die Structure wie oben definiert, wird noch kein Speicher alloziert. D.h. Sie sagen dem Compiler nur, dass es so eine Struktur geben solle. Sie können nun explizit via `proc foo;´  den Speicher für dies Struktur allokieren (Achtung! Was auch immer dort im Speicher steht, steht jetzt in dieser Struktur!) oder dies schon bei der Deklaration erledigen. 
 
 ```c
 int main()
@@ -593,7 +593,7 @@ int main()
 }
 ```
 
-Auf den Inhalt der Felder greifen Sie mit einem Punkt (engl. dot operator) `.` zu, wenn Sie nicht die Struct selbst kennen, sondern nur einen Poonter darauf kennen, erhalten Sie über einen Pfeil`->` (engl. arrow operator) darauf Zugriff - letzertes wird manchmal auf "member by pointer" genannt. 
+Auf den Inhalt der Felder greifen Sie mit einem Punkt (engl. dot operator) `.` zu, wenn Sie nicht die Struct selbst kennen, sondern nur einen Pointer darauf kennen, erhalten Sie über einen Pfeil`->` (engl. arrow operator) darauf Zugriff - Letzteres wird manchmal auf "member by pointer" genannt. 
 
 Das folgende Beispiel verdeutlicht die Funktionsweise.
 
@@ -642,7 +642,7 @@ int main()
 } 
 ```
 
-Wie zuvor deklarieren wir eine Strucutre, definiren diesesmal aber keine Array. Anstelle dessen definieren wir lediglich einen Pointer der für ein Prozesse genutzt werden soll. Den Speicher reservieren wir über einen Funktionsaufruf *malloc*. Diese Funktion ist in der C-Standardbilbiothek deklariert *stdlib.h*, weswegen wir diese mit einem *include* hinzufügen müssen. Da *p* dieses Mal ein Pointer ist, müssen wir mit dem arrow operator auf *procstate* zugreifen. 
+Wie zuvor deklarieren wir eine Structure, definieren nun aber keine Array. Anstelle dessen definieren wir lediglich einen Pointer der für ein Prozesse genutzt werden soll. Den Speicher reservieren wir über einen Funktionsaufruf *malloc*. Diese Funktion ist in der C-Standardbibliothek deklariert *stdlib.h*, weswegen wir diese mit einem *include* hinzufügen müssen. Da *p* dieses Mal ein Pointer ist, müssen wir mit dem arrow operator auf *procstate* zugreifen. 
 
 **Übungsaufgaben:**
 1. Entfernen Sie die Zeile `p = ...` aus Ihrem Code, kompilieren Sie das Programm und starten Sie es. Es wird ein Fehler auftreten, notieren Sie sich den Fehler. Wir kommen später im Laufe der Vorlesung nochmals auf diesen Fehler zu sprechen. 
@@ -673,12 +673,12 @@ struct proc {
 };
 ```
 
-**Übungsausfgaben:**
+**Übungsaufgaben:**
 1. Gehen Sie Zeile für Zeile durch die obige Structure und verstehen Sie jedes einzelne Konstrukt. Den Inhalt bzw. die Semantik der einzelnen Einträge können Sie zum jetzigen Zeitpunkt ignorieren. Verstehen Sie jedoch die Syntax welche sich hinter jeden einzelnen Zeile verbirgt.
 
 ### One more Thing
 
-In der vorletzen Übungsaufgabe sollten Sie in der dritten Aufgabe das `*` verschieben. Falls Sie die Übung nicht gemacht haben, wird hier nicht gespoilert was passiert ist. Probieren Sie es einmal aus! Sie werden überrascht sein! Um zu verstehen was hier passiert schauen wir uns ein weiteres Beispiel an: 
+In der vorletzten Übungsaufgabe sollten Sie in der dritten Aufgabe das `*` verschieben. Falls Sie die Übung nicht gemacht haben, wird hier nicht gespoilert was passiert ist. Probieren Sie es einmal aus! Sie werden überrascht sein! Um zu verstehen was hier passiert schauen wir uns ein weiteres Beispiel an: 
 
 
 ```c
@@ -693,12 +693,24 @@ Die Schreibweise suggeriert jedoch, dass es sich um zwei Pointer handelt. Tatsä
 int *p1, p2;
 ```
 
-Die Verwirrung tritt eigentlich nur auf, wenn Sie versuchen mehrer Variablen in einer Zeile zu deklarieren. Und ob Sie es glauben oder nicht: Sie sind nicht der/die erste (angehende) Programmierer*in, die [über dieses "Problem" stolpert](https://www.stroustrup.com/bs_faq2.html#whitespace).
+Die Verwirrung tritt eigentlich nur auf, wenn Sie versuchen mehrere Variablen in einer Zeile zu deklarieren. Und ob Sie es glauben oder nicht: Sie sind nicht der/die erste (angehende) Programmierer*in, die [über dieses "Problem" stolpert](https://www.stroustrup.com/bs_faq2.html#whitespace).
 
 
 ## C-Bibliotheken 
-## Anhang 
+
+Zuletzt stellt sich die Frage, woher der Compiler weiß, wo nach den einzelnen Dateien zu suchen ist.  
+
+Am [Beispiel von GCC]([GCC Dokumentation](http://gcc.gnu.org/onlinedocs/cpp/Search-Path.html)) werden alle Dateien, welche mittels `#include "datei"` referenziert werden zunächst im aktuellen Verzeichnis gesucht. Danach prüft der Compiler, oder besser, der Präprozessor, eine Liste von Standardverzeichnissen, die standardmäßig hinterlegt sind.
+
+Bei Dateien, die mittels Klammern, z.B. `#include <datei>`  angegeben werden, sucht der Compiler ausschließlich in den Standardverzeichnissen.  
+
+Mittels `gcc -v /dev/null -o /dev/null` ist es u.a. möglich den `LIBRARY_PATH` auszulesen.  
+
+Mittels der Option `-I` lassen sich zusätzlich Verzeichnissen für die *Include*-Direktive spezifizieren. Falls die zuvor beschriebene Unterscheidungsmöglichkeit erforderlich sein, können zusätzliche Verzeichnisse auch mittels `-iquote` und `-isystem`spezifizieren. 
+
 ## C Style Guide 
+
+* [C Programming Style Guide](https://www.pk.org/rutgers/notes/pdf/Cstyle.pdf) von Paul Krzyzanowski
 
 ---
 
