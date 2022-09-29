@@ -1,23 +1,22 @@
+<!--
+
+author:   Andreas Heil
+email:    andreas.heil@hs-heilbronn.de
+version:  0.1
+language: de
+narrator: DE German Male
+
+comment:  
+
+-->
+
+[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://LiaScript.github.io/course/?https://github.com/aheil/hhn-c) 
+
 # C Crashkurs
 
----
-Last modified: 2021/05/18 01:21:24
-  Created: 2020/09/16 21:21:48  
-Version: 1.0.0  
-Author: [aheil](https://www.github.com/aheil)  
+C Crashkurs zur Vorlesung Betriebssystem an der Hochschule Heilbronn im Studiengang  Software Engineering Bachelor (SEB). 
 
----
-
-Crashkurs zur Vorlesung Betriebssystem an der Hochschule Heilbronn im Studiengang  Software Engineering Bachelor (SEB). 
-
-Inhalt 
-* [Dialog](#Dialog)
-* [Grundlagen](#grundlagen)
-* [Funktionen](#funktionen)
-* [Pointers](#pointers)
-* [Datenstrukturen](#datenstrukturen)
-* [C-Bibliotheken](#bibliotheken) 
-* [Anhang 1: C Style Guide](#c-style-guide)
+Dieser Kurs ist auch als [interaktiver LiaScript](https://LiaScript.github.io/course/?https://github.com/aheil/hhn-c) Kurs verfügbar
 
 ## Ein Dialog über C
 
@@ -712,7 +711,8 @@ Mittels der Option `-I` lassen sich zusätzlich Verzeichnissen für die *Include
 
 * [C Programming Style Guide](https://www.pk.org/rutgers/notes/pdf/Cstyle.pdf) von Paul Krzyzanowski
 
----
+
+## Lizenz
 
 ![https://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
