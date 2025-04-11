@@ -51,6 +51,7 @@ Für die meisten Übungen insbesondere die C-Übungen benötigen Sie ein Linux S
 * Sie verwenden bereits Linux (Ubuntu, Debian etc.) ✅
 * Sie verwenden MacOS ✅
 * Sie verwenden [Windows 10 mit Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10) ✅
+* Sie verwenden [MSYS2](https://www.msys2.org)
 * Frühere Windows Version ❌
 
 Testen ob `gcc` installiert ist. 
